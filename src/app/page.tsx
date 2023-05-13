@@ -1,3 +1,11 @@
+import Todo from "./components/todo/Todo";
+
 export default function Home() {
-  return <p>hello world</p>;
+  return (
+    <>
+      <h1>to do list</h1>
+      <p>hello world</p>
+      <Todo />
+    </>
+  );
 }

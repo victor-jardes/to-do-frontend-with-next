@@ -16,19 +16,24 @@ export default function InputsTodo() {
 
   const handleAddTask = (description: string) => {
     saveTodo({ description });
+    setTaskValue("");
   };
 
   return (
     <>
       <input
         type="text"
-        placeholder="write your task here"
+        placeholder="Write your task here"
         onChange={(e) => handleTask(e)}
+        value={taskValue}
+        data-testid="data-test-write-todo"
       />
       <input
         type="button"
-        value="Add"
+        value="ADD"
         onClick={() => handleAddTask(taskValue)}
+        disabled={taskValue.length >= 2 ? false : true}
+        data-testid="data-test-button-add-todo"
       />
     </>
   );

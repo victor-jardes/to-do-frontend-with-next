@@ -1,3 +1,4 @@
+import TodoProvider from "./context/todoProvider";
 import "./globals.css";
 import { Inter } from "next/font/google";
 
@@ -14,8 +15,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="pt-bs">
-      <body className={inter.className}>{children}</body>
+    <html lang="pt-br">
+      <body>
+        <TodoProvider>{children}</TodoProvider>
+      </body>
     </html>
   );
 }

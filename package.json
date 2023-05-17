@@ -9,6 +9,7 @@
     "lint": "next lint",
     "commit": "cz",
     "cypress": "cypress open",
+    "cypress:component": "cypress open --component",
     "test": "jest --watch"
   },
   "dependencies": {

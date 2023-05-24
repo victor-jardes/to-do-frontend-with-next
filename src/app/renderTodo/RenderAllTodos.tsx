@@ -1,14 +1,17 @@
-import { IButtonValueAttribute } from "@/@types/IButtonValueAttribute";
-import { ITodo } from "@/@types/todo";
+"use client";
 
-const isEmptyValue = () => {
-  return <p data-testid="data-test-empty-value">empty...</p>;
-};
+import { ITodo, TodoContextType } from "@/@types/ITodo";
+import { useContext } from "react";
+import { TodoContext } from "../context/todoContext";
 
-const itemInList = (
-  { id, description, isFinished }: ITodo,
-  finishedTodo: (e: IButtonValueAttribute) => void
-) => {
+interface IItemInListProps {
+  todos: ITodo;
+}
+
+const ItemInList = ({
+  todos: { id, description, isFinished },
+}: IItemInListProps) => {
+  const { finishedTodo } = useContext(TodoContext) as TodoContextType;
   return (
     <li
       key={id}
@@ -21,8 +24,8 @@ const itemInList = (
       {description}
       <button
         type="button"
-        onClick={(e: IButtonValueAttribute) => finishedTodo(e)}
         value={id}
+        onClick={(element) => finishedTodo(element.currentTarget.value)}
         data-testid={`data-test-button-complet-${id}`}
       >
         COMPLET
@@ -31,20 +34,22 @@ const itemInList = (
   );
 };
 
-interface propsType {
+interface IRooComponentProps {
   todos: ITodo[];
-  finishedTodo: (e: IButtonValueAttribute) => void;
 }
 
-export default function RenderALlTodos({ todos, finishedTodo }: propsType) {
+export default function RenderALlTodos({ todos }: IRooComponentProps) {
   return (
     <>
-      {todos.length <= 0 && isEmptyValue()}
+      {todos.length <= 0 && <p data-testid="data-test-empty-value">empty...</p>}
       <ul datat-testid="data-test-list-with-todos">
         {todos.length > 0 &&
-          todos.map(({ id, description, isFinished }) =>
-            itemInList({ id, description, isFinished }, finishedTodo)
-          )}
+          todos.map(({ id, description, isFinished }) => (
+            <ItemInList
+              todos={{ id, description, isFinished }}
+              key={`${description}-${id}`}
+            />
+          ))}
       </ul>
     </>
   );

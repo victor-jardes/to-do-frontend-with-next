@@ -1,3 +1,4 @@
+import { Dispatch } from "react";
 import { IButtonValueAttribute } from "./IButtonValueAttribute";
 
 export interface ITodo {
@@ -8,6 +9,9 @@ export interface ITodo {
 
 export type TodoContextType = {
   todos: ITodo[];
-  saveTodo: ({ description }: partial<ITodo>) => void;
-  finishedTodo: ({ target }: IButtonValueAttribute) => void;
+  taskValue: string;
+  saveTodo: () => void;
+  setAllTodo: Dispatch<ITodo[]>;
+  finishedTodo: (id: string) => void;
+  setTaskValue: Dispatch<string>;
 };

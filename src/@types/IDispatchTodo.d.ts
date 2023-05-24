@@ -1,4 +1,4 @@
-import { ITodo } from "@/@types/todo";
+import { ITodo } from "@/@types/ITodo";
 import React from "react";
 import { IButtonValuAttribute } from "./IButtonValueAttribute";
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { ITodo, TodoContextType } from "@/@types/todo";
+import { ITodo, TodoContextType } from "@/@types/ITodo";
 import { TodoContext } from "./todoContext";
 import { useState } from "react";
 import { IComponentChildren } from "@/@types/IComponentChildren";

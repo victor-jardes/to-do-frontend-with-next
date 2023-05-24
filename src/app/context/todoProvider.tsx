@@ -1,36 +1,37 @@
 "use client";
 
-import { ITodo } from "@/@types/todo";
+import { ITodo, TodoContextType } from "@/@types/todo";
 import { TodoContext } from "./todoContext";
 import { useState } from "react";
 import { IComponentChildren } from "@/@types/IComponentChildren";
-import { InputValueAttibute } from "@/@types/IInputValueAttribute";
+import {
+  dispatchSaveTodo,
+  dispatchFinishedTodo,
+} from "@/app/context/utils/dispatchTodo";
 
 export default function TodoProvider({ children }: IComponentChildren) {
-  const [todos, setAllTodos] = useState<ITodo[]>([]);
+  const [todos, setAllTodo] = useState<ITodo[]>([]);
+  const [taskValue, setTaskValue] = useState("");
 
-  const saveTodo = ({ description }: ITodo) => {
-    const newTodo: ITodo = {
-      id: self.crypto.randomUUID(),
-      description,
-      isFinished: false,
-    };
-    setAllTodos([...todos, newTodo]);
-  };
-
-  const finishedTodo = ({ target }: InputValueAttibute) => {
-    todos.filter((todo: ITodo) => {
-      if (todo.id === target.value) {
-        todo.isFinished = !todo.isFinished;
-        setAllTodos([...todos]);
-      }
+  const saveTodo = () => {
+    dispatchSaveTodo({
+      description: taskValue,
+      setAllTodo,
+      todos,
     });
   };
 
-  const values = {
+  const finishedTodo = (id: string) => {
+    dispatchFinishedTodo({ id, setAllTodo, todos });
+  };
+
+  const values: TodoContextType = {
     todos,
+    taskValue,
     saveTodo,
     finishedTodo,
+    setTaskValue,
+    setAllTodo,
   };
   return <TodoContext.Provider value={values}>{children}</TodoContext.Provider>;
 }

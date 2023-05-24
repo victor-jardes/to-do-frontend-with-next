@@ -1,17 +1,16 @@
 import React from "react";
 import RenderALlTodos from "./RenderAllTodos";
-import { ITodo } from "@/@types/todo";
+import { ITodo } from "@/@types/ITodo";
 
-describe("<RenderALlTodos />", () => {
+describe("<RenderALlTodos /> components", () => {
   it("should be able rendering `empty` conditional function containing `<p>` tag HTML", () => {
     const EMPTY_VALUE_RENDER = "[data-testid='data-test-empty-value']";
 
-    cy.mountTodoApp(<RenderALlTodos todos={[]} finishedTodo={cy.spy()} />);
+    cy.mountTodoApp(<RenderALlTodos todos={[]} />);
     cy.get(EMPTY_VALUE_RENDER).should("be.visible", true);
   });
 
-  it.only("should be able render with `task` with props", () => {
-    const spyFun = cy.spy().as("spyFunc");
+  it("should be able render `<ul>` tag and `<li>` with `<button>` element in list", () => {
     const myValues: ITodo[] = [];
     const DATA_TESTID_LIST_WITH_TODOS =
       "[datat-testid='data-test-list-with-todos']";
@@ -20,9 +19,7 @@ describe("<RenderALlTodos />", () => {
       for (let i = 0; i < todo.length; i += 1) {
         myValues.push(todo[i]);
       }
-      cy.mountTodoApp(
-        <RenderALlTodos todos={myValues} finishedTodo={spyFun} />
-      );
+      cy.mountTodoApp(<RenderALlTodos todos={myValues} />);
 
       cy.get(DATA_TESTID_LIST_WITH_TODOS)
         .should("be.visible")
@@ -50,8 +47,7 @@ describe("<RenderALlTodos />", () => {
           cy.get(DATA_TESTID_BUTTON_COMPLET_TODO)
             .should("be.visible")
             .and("have.value", $el.attr("id"))
-            .and("have.text", "COMPLET")
-            .click();
+            .and("have.text", "COMPLET");
         });
     });
   });

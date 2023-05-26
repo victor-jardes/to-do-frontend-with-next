@@ -13,16 +13,21 @@ const ItemInList = ({
 }: IItemInListProps) => {
   const { finishedTodo } = useContext(TodoContext) as TodoContextType;
   return (
-    <li
-      key={id}
-      style={
-        isFinished ? { backgroundColor: "red" } : { backgroundColor: "inherit" }
-      }
-      id={id}
-      data-testid={`data-test-item-in-list-${id}`}
-    >
-      {description}
+    <>
+      <li
+        key={id}
+        style={
+          isFinished
+            ? { backgroundColor: "red" }
+            : { backgroundColor: "inherit" }
+        }
+        id={id}
+        data-testid={`data-test-item-in-list-${id}`}
+      >
+        {description}
+      </li>
       <button
+        id={`button-complet-${id}`}
         type="button"
         value={id}
         onClick={(element) => finishedTodo(element.currentTarget.value)}
@@ -30,7 +35,7 @@ const ItemInList = ({
       >
         COMPLET
       </button>
-    </li>
+    </>
   );
 };
 
@@ -42,7 +47,7 @@ export default function RenderALlTodos({ todos }: IRooComponentProps) {
   return (
     <>
       {todos.length <= 0 && <p data-testid="data-test-empty-value">empty...</p>}
-      <ul datat-testid="data-test-list-with-todos">
+      <ul data-testid="data-test-list-with-todos" id="lala">
         {todos.length > 0 &&
           todos.map(({ id, description, isFinished }) => (
             <ItemInList

@@ -47,7 +47,7 @@ export default function RenderALlTodos({ todos }: IRooComponentProps) {
   return (
     <>
       {todos.length <= 0 && <p data-testid="data-test-empty-value">empty...</p>}
-      <ul data-testid="data-test-list-with-todos" id="lala">
+      <ul data-testid="data-test-list-with-todos">
         {todos.length > 0 &&
           todos.map(({ id, description, isFinished }) => (
             <ItemInList

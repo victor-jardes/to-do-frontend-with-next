@@ -14,13 +14,17 @@ const InputWriteTodo = ({
   taskValue,
 }: InputWriteTodoProps) => {
   return (
-    <input
-      type="text"
-      placeholder="Write your task here"
-      onChange={(e) => handleWriteTask(e)}
-      value={taskValue}
-      data-testid="data-test-write-todo"
-    />
+    <>
+      <label htmlFor="input-for-write-task">Write you task here</label>
+      <input
+        id="input-for-write-task"
+        type="text"
+        value={taskValue}
+        onChange={(e) => handleWriteTask(e)}
+        placeholder="EX: wash to car"
+        data-testid="data-test-write-todo"
+      />
+    </>
   );
 };
 
@@ -31,13 +35,19 @@ interface ButtonAddTodoProps {
 
 const ButtonAddTodo = ({ handleAddTask, taskValue }: ButtonAddTodoProps) => {
   return (
-    <input
-      type="button"
-      value="ADD"
-      onClick={() => handleAddTask()}
-      disabled={taskValue.length >= 2 ? false : true}
-      data-testid="data-test-button-add-todo"
-    />
+    <>
+      <label htmlFor="button-add-todo">ADD your todo</label>
+      <button
+        id="button-add-todo"
+        type="button"
+        value="ADD"
+        onClick={() => handleAddTask()}
+        disabled={taskValue.length >= 2 ? false : true}
+        data-testid="data-test-button-add-todo"
+      >
+        ADD
+      </button>
+    </>
   );
 };
 

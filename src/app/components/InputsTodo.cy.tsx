@@ -7,7 +7,8 @@ describe("Inputs `todo` components", () => {
     const DATA_TESTID_BUTTON_ADD_TODO =
       "[data-testid='data-test-button-add-todo']";
 
-    const onChangeSpy = cy.spy().as("onChangeSpy");
+    const INPUT_PLACEHOLDER = "EX: wash to car";
+
     cy.mountTodoApp(<InputsTodo />);
 
     cy.get(DATA_TESTID_INPUT_WRITE_TASK).should("be.visible");
@@ -19,7 +20,7 @@ describe("Inputs `todo` components", () => {
     cy.get(DATA_TESTID_INPUT_WRITE_TASK).should(
       "have.attr",
       "placeholder",
-      "Write your task here"
+      INPUT_PLACEHOLDER
     );
     cy.get(DATA_TESTID_BUTTON_ADD_TODO).should("have.value", "ADD");
 

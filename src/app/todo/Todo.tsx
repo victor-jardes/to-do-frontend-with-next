@@ -1,7 +1,7 @@
 "use client";
 
 import { useContext } from "react";
-import { TodoContextType } from "@/@types/ITodo";
+import { TodoContextType } from "@/types/ITodo";
 import { TodoContext } from "@/app/context/todoContext";
 import InputsTodo from "../components/InputsTodo";
 import RenderALlTodos from "../components/RenderAllTodos";

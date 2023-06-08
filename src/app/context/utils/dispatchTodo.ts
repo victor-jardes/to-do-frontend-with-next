@@ -1,8 +1,8 @@
 import {
   IDispatchFinishedTodo,
   IDispatchSaveTodo,
-} from "@/@types/IDispatchTodo";
-import { ITodo } from "@/@types/ITodo";
+} from "@/types/IDispatchTodo";
+import { ITodo } from "@/types/ITodo";
 import { v4 as uuidv4 } from "uuid";
 
 export const dispatchSaveTodo = ({

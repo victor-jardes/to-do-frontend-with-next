@@ -1,8 +1,8 @@
 "use client";
 import React, { useContext } from "react";
-import { InputValueAttibute } from "@/@types/IInputValueAttribute";
+import { InputValueAttibute } from "@/types/IInputValueAttribute";
 import { TodoContext } from "../context/todoContext";
-import { TodoContextType } from "@/@types/ITodo";
+import { TodoContextType } from "@/types/ITodo";
 
 type InputWriteTodoProps = {
   taskValue: string;

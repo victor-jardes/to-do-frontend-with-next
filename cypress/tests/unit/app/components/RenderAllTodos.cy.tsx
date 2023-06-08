@@ -1,5 +1,7 @@
+/// <reference types="cypress" />
+
 import React from "react";
-import RenderALlTodos from "./RenderAllTodos";
+import RenderALlTodos from "../../../../../src/app/components/RenderAllTodos";
 import { ITodo } from "@/types/ITodo";
 
 const MY_ALL_TODOS = [

@@ -1,5 +1,7 @@
+/// <reference types="cypress" />
+
 import React from "react";
-import InputsTodo from "./InputsTodo";
+import InputsTodo from "../../../../../src/app/components/InputsTodo";
 
 describe("Inputs `todo` components", () => {
   it("should be able render inputs in page and your functions and properties", () => {

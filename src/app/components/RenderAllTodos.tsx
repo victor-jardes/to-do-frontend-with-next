@@ -39,12 +39,11 @@ const ItemInList = ({
   );
 };
 
-// arrumar akki
-interface IRooComponentProps {
+interface IRootComponentProps {
   todos: ITodo[];
 }
 
-export default function RenderALlTodos({ todos }: IRooComponentProps) {
+export default function RenderALlTodos({ todos }: IRootComponentProps) {
   return (
     <>
       {todos.length <= 0 && (

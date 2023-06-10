@@ -39,6 +39,7 @@ const ItemInList = ({
   );
 };
 
+// arrumar akki
 interface IRooComponentProps {
   todos: ITodo[];
 }
@@ -46,8 +47,16 @@ interface IRooComponentProps {
 export default function RenderALlTodos({ todos }: IRooComponentProps) {
   return (
     <>
-      {todos.length <= 0 && <p data-testid="data-test-empty-value">empty...</p>}
-      <ul data-testid="data-test-list-with-todos">
+      {todos.length <= 0 && (
+        <p data-testid="data-test-empty-value" id="empty-value">
+          empty...
+        </p>
+      )}
+      <ul
+        id="list-with-todos"
+        role="list"
+        data-testid="data-test-list-with-todos"
+      >
         {todos.length > 0 &&
           todos.map(({ id, description, isFinished }) => (
             <ItemInList

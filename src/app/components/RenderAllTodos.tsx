@@ -23,6 +23,7 @@ const ItemInList = ({
         }
         id={id}
         data-testid={`data-test-item-in-list-${id}`}
+        value={description}
       >
         {description}
       </li>

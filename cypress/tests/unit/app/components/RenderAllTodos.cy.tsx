@@ -1,6 +1,8 @@
+/// <reference types="cypress" />
+
 import React from "react";
-import RenderALlTodos from "./RenderAllTodos";
-import { ITodo } from "@/@types/ITodo";
+import RenderALlTodos from "../../../../../src/app/components/RenderAllTodos";
+import { ITodo } from "@/types/ITodo";
 
 const MY_ALL_TODOS = [
   {
@@ -81,5 +83,5 @@ describe("<RenderALlTodos /> components", () => {
       expect($el[2].getAttribute("value")).to.equal("3");
       expect($el[2].textContent).to.equal("COMPLET");
     });
-  })
-})
+  });
+});

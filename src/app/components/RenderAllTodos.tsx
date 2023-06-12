@@ -1,6 +1,6 @@
 "use client";
 
-import { ITodo, TodoContextType } from "@/@types/ITodo";
+import { ITodo, TodoContextType } from "@/types/ITodo";
 import { useContext } from "react";
 import { TodoContext } from "../context/todoContext";
 
@@ -23,6 +23,7 @@ const ItemInList = ({
         }
         id={id}
         data-testid={`data-test-item-in-list-${id}`}
+        value={description}
       >
         {description}
       </li>
@@ -39,15 +40,23 @@ const ItemInList = ({
   );
 };
 
-interface IRooComponentProps {
+interface IRootComponentProps {
   todos: ITodo[];
 }
 
-export default function RenderALlTodos({ todos }: IRooComponentProps) {
+export default function RenderALlTodos({ todos }: IRootComponentProps) {
   return (
     <>
-      {todos.length <= 0 && <p data-testid="data-test-empty-value">empty...</p>}
-      <ul data-testid="data-test-list-with-todos">
+      {todos.length <= 0 && (
+        <p data-testid="data-test-empty-value" id="empty-value">
+          empty...
+        </p>
+      )}
+      <ul
+        id="list-with-todos"
+        role="list"
+        data-testid="data-test-list-with-todos"
+      >
         {todos.length > 0 &&
           todos.map(({ id, description, isFinished }) => (
             <ItemInList

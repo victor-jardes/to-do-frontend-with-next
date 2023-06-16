@@ -44,7 +44,7 @@ interface IRootComponentProps {
   todos: ITodo[];
 }
 
-export default function RenderALlTodos({ todos }: IRootComponentProps) {
+export default function RenderAllTodos({ todos }: IRootComponentProps) {
   return (
     <>
       {todos.length <= 0 && (

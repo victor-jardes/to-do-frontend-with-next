@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
 import React from "react";
-import RenderALlTodos from "../../../../../src/app/components/RenderAllTodos";
+import RenderAllTodos from "../../../../../src/app/components/RenderAllTodos";
 import { ITodo } from "@/types/ITodo";
 
 const MY_ALL_TODOS = [
@@ -26,7 +26,7 @@ describe("<RenderALlTodos /> components", () => {
   it("should be able rendering `empty` conditional function containing `<p>` tag HTML", () => {
     const EMPTY_VALUE_RENDER = "[data-testid='data-test-empty-value']";
 
-    cy.mountTodoApp(<RenderALlTodos todos={[]} />);
+    cy.mountTodoApp(<RenderAllTodos todos={[]} />);
     cy.get(EMPTY_VALUE_RENDER).should("be.visible", true);
   });
 
@@ -35,7 +35,7 @@ describe("<RenderALlTodos /> components", () => {
     const DATA_TESTID_LIST_WITH_TODOS =
       "[data-testid='data-test-list-with-todos']";
 
-    cy.mountTodoApp(<RenderALlTodos todos={myValues} />);
+    cy.mountTodoApp(<RenderAllTodos todos={myValues} />);
 
     cy.get(DATA_TESTID_LIST_WITH_TODOS)
       .should("be.visible")

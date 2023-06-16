@@ -1,7 +1,7 @@
 import React from "react";
 import { screen, render, within } from "@testing-library/react";
 import TodoProvider from "@/app/context/todoProvider";
-import RenderALlTodos from "@/app/components/RenderAllTodos";
+import RenderAllTodos from "@/app/components/RenderAllTodos";
 import { ITodo } from "@/types/ITodo";
 
 const todos: ITodo[] = [
@@ -30,7 +30,7 @@ describe("<renderAllTodos> component", () => {
       beforeEach(() => {
         render(
           <TodoProvider>
-            <RenderALlTodos todos={[]} />
+            <RenderAllTodos todos={[]} />
           </TodoProvider>
         );
       });
@@ -62,7 +62,7 @@ describe("<renderAllTodos> component", () => {
         beforeEach(() => {
           render(
             <TodoProvider>
-              <RenderALlTodos todos={todos} />
+              <RenderAllTodos todos={todos} />
             </TodoProvider>
           );
           getListWithTodos = screen.getByTestId(UL_DATA_TESTID);
@@ -112,7 +112,7 @@ describe("<renderAllTodos> component", () => {
         it("should be able render button, and your attributes", () => {
           render(
             <TodoProvider>
-              <RenderALlTodos todos={todos} />
+              <RenderAllTodos todos={todos} />
             </TodoProvider>
           );
 

@@ -2,7 +2,7 @@ import React from "react";
 import { screen, render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import TodoProvider from "@/app/context/todoProvider";
-import InputsTodo from "@/app/components/InputsTodo";
+import InputsTodo from "@/app/components/inputs/InputsTodo";
 
 describe("<InputsTodo> component test", () => {
   describe("check attributes in `input` and `button` tag", () => {

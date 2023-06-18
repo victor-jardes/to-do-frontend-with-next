@@ -1,6 +1,6 @@
 import React from "react";
-import InputWriteTask from "./inputs/InputWriteTask";
-import ButtonAddTask from "./inputs/ButtonAddTask";
+import InputWriteTask from "./InputWriteTask";
+import ButtonAddTask from "./ButtonAddTask";
 
 export default function InputsTodo() {
   return (

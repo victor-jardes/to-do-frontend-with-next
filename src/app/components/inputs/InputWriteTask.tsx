@@ -1,3 +1,5 @@
+"use client";
+
 import { TodoContext } from "@/app/context/todoContext";
 import { InputValueAttibute } from "@/types/IInputValueAttribute";
 import { TodoContextType } from "@/types/ITodo";
@@ -7,9 +9,11 @@ export default function InputWriteTask() {
   const { setTaskValue, taskValue } = useContext(
     TodoContext
   ) as TodoContextType;
+
   const handleWriteTask = ({ target }: InputValueAttibute) => {
     setTaskValue(target.value);
   };
+
   return (
     <>
       <label htmlFor="input-for-write-task">Write you task here</label>

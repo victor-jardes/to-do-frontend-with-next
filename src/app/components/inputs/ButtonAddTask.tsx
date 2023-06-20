@@ -1,16 +1,29 @@
+"use client";
+
+import { requestForCreateTask } from "@/app/api/todo/createTask";
 import { TodoContext } from "@/app/context/todoContext";
 import { TodoContextType } from "@/types/ITodo";
 import { useContext } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 export default function ButtonAddTask() {
-  const { saveTodo, setTaskValue, taskValue } = useContext(
+  const { setTaskValue, taskValue, setAllTodo, todos } = useContext(
     TodoContext
   ) as TodoContextType;
 
-  const handleAddTask = () => {
-    saveTodo();
-    setTaskValue("");
+  const handleAddTask = async () => {
+    try {
+      const createAndGetNewTask = await requestForCreateTask({
+        id: uuidv4(),
+        description: taskValue,
+      });
+      setAllTodo([...todos, createAndGetNewTask[0]]);
+      setTaskValue("");
+    } catch {
+      console.log("error in save task");
+    }
   };
+
   return (
     <>
       <label htmlFor="button-add-todo">ADD your todo</label>

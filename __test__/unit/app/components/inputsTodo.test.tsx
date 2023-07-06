@@ -1,5 +1,5 @@
 import React from "react";
-import { screen, render } from "@testing-library/react";
+import { screen, render, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import TodoProvider from "@/app/context/todoProvider";
 import InputsTodo from "@/app/components/inputs/InputsTodo";
@@ -28,10 +28,6 @@ describe("<InputsTodo> component test", () => {
       expect(inputWriteTask).toHaveAttribute("type", INPUT_TYPE);
       expect(inputWriteTask).toHaveAttribute("placeholder", MY_PLACE_HOLDER);
       expect(inputWriteTask).toHaveAttribute("data-testid", INPUT_DATA_TEST_ID);
-    });
-
-    it("should be able render `input` with your dynamic attribute", () => {
-      const inputWriteTask = screen.getByLabelText("Write you task here");
       expect(inputWriteTask).toHaveAttribute("value", "");
     });
 
@@ -117,8 +113,10 @@ describe("<InputsTodo> component test", () => {
       expect(getMyButtonWithLabel).not.toBeDisabled();
       await user.click(getMyButtonWithLabel);
 
-      expect(getMyInputWithLabel).toHaveValue("");
-      expect(getMyButtonWithLabel).toBeDisabled();
+      await waitFor(() => {
+        expect(getMyInputWithLabel).toHaveValue("");
+        expect(getMyButtonWithLabel).toBeDisabled();
+      });
     });
   });
 });

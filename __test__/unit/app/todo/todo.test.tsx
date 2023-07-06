@@ -1,5 +1,10 @@
 import React from "react";
-import { screen, render, within } from "@testing-library/react";
+import {
+  screen,
+  render,
+  within,
+  waitForElementToBeRemoved,
+} from "@testing-library/react";
 import Todo from "@/app/todo/Todo";
 import TodoProvider from "@/app/context/todoProvider";
 import userEvent from "@testing-library/user-event";
@@ -25,7 +30,6 @@ describe("<Todo> component", () => {
 
     const getInputForWrite = screen.getByLabelText(INPUT_WRITE_LABEtEXT);
     const getButtonAdd = screen.getByLabelText(BUTTON_LABEL_ADD_TASK);
-
     expect(getInputForWrite).toBeVisible();
     expect(getButtonAdd).toBeVisible();
 
@@ -40,9 +44,11 @@ describe("<Todo> component", () => {
     expect(getInputForWrite.getAttribute("value")).toBe(TASK_FOR_WRITE);
 
     expect(getButtonAdd).toBeEnabled();
-
     await user.click(getButtonAdd);
-    expect(getEmptyParagraph).not.toBeVisible();
+
+    await waitForElementToBeRemoved(() => {
+      return screen.getByTestId(DATA_TEST_ID_EMPTY_CONDITIONAL);
+    });
 
     expect(getInputForWrite.getAttribute("value")).toBe("");
     expect(getButtonAdd).toBeDisabled();

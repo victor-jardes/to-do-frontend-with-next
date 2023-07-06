@@ -2,6 +2,7 @@
 
 import { ITodo } from "@/types/ITodo";
 import { useGetContextForList } from "./utils/useGetContextForList";
+import { Fragment } from "react";
 
 export function RenderEmpty() {
   return (
@@ -14,17 +15,19 @@ export function RenderEmpty() {
 }
 
 interface IRenderAllTodos {
-  listWithTodos?: ITodo[];
+  todos?: ITodo[];
 }
-export default function RenderAllTodos({ listWithTodos }: IRenderAllTodos) {
+export default function RenderAllTodos({
+  todos: listWithTodosForTest,
+}: IRenderAllTodos) {
   let todos: ITodo[];
 
-  const { finishedTodo, todos: lala } = useGetContextForList();
+  const { finishedTodo, todos: todosInContext } = useGetContextForList();
 
-  if (listWithTodos) {
-    todos = listWithTodos;
+  if (listWithTodosForTest) {
+    todos = listWithTodosForTest;
   } else {
-    todos = lala;
+    todos = todosInContext;
   }
 
   return (
@@ -36,7 +39,7 @@ export default function RenderAllTodos({ listWithTodos }: IRenderAllTodos) {
         data-testid="data-test-list-with-todos"
       >
         {todos.map(({ id, description, isFinished }) => (
-          <div key={id}>
+          <Fragment key={id}>
             <li
               style={
                 isFinished
@@ -58,7 +61,7 @@ export default function RenderAllTodos({ listWithTodos }: IRenderAllTodos) {
             >
               COMPLET
             </button>
-          </div>
+          </Fragment>
         ))}
       </ul>
     </>

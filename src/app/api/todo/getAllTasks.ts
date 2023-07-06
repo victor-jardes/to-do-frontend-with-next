@@ -1,10 +1,16 @@
-export async function requestForGetAllTasks() {
-  const res = await fetch("http://localhost:3001/todo/findAll", {
-    cache: "no-store",
-  });
+import axios from "axios";
 
-  if (!res.ok) {
-    console.error("Failed to fetch data");
+// const API_URL = process.env.MY_API_URL;
+const API_URL = "http://localhost:3001";
+
+export async function requestForGetAllTasks() {
+  try {
+    const { data } = await axios({
+      method: "GET",
+      url: `${API_URL}/todo/findAll`,
+    });
+    return data;
+  } catch (err) {
+    console.error("fail in get all");
   }
-  return res.json();
 }

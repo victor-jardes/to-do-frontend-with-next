@@ -1,25 +1,26 @@
 import { ITodo } from "@/types/ITodo";
+import axios from "axios";
+
+const API_URL = "http://localhost:3001";
 
 export async function requestForCreateTask({
   id,
   description,
 }: Omit<ITodo, "isFinished">) {
   try {
-    const res = await fetch("http://localhost:3001/todo/create", {
+    const { data, statusText } = await axios<ITodo>({
+      url: `${API_URL}/todo/create`,
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
+      data: {
+        id,
+        description,
       },
-      body: JSON.stringify({ id, description }),
     });
 
-    if (res.ok) {
-      const newTask = await res.json();
-      return newTask;
-    } else {
-      console.error("erro with created task", res.status);
+    if (statusText) {
+      return data;
     }
-  } catch (err) {
-    console.error(err);
+  } catch {
+    console.error("error in created task");
   }
 }

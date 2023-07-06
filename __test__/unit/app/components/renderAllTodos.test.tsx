@@ -1,7 +1,7 @@
 import React from "react";
 import { screen, render, within } from "@testing-library/react";
 import TodoProvider from "@/app/context/todoProvider";
-import RenderAllTodos from "@/app/components/RenderAllTodos";
+import RenderAllTodos from "@/app/components/list/RenderAllTodos";
 import { ITodo } from "@/types/ITodo";
 
 const todos: ITodo[] = [
@@ -24,18 +24,16 @@ const todos: ITodo[] = [
 
 describe("<renderAllTodos> component", () => {
   describe("sucess case", () => {
-    describe("When not contian task", () => {
-      const TEXT_IN_EMPTY_PARAGRAPH = "empty...";
+    describe("When not contain pending tasks", () => {
+      it("should render conditional if not contain tasks in list, and verify your attr too", () => {
+        const TEXT_IN_EMPTY_PARAGRAPH = "empty...";
 
-      beforeEach(() => {
         render(
           <TodoProvider>
             <RenderAllTodos todos={[]} />
           </TodoProvider>
         );
-      });
 
-      it("should be possible to contain all attributes in empty paragraph", () => {
         const getParagraph = screen.getByText(TEXT_IN_EMPTY_PARAGRAPH);
 
         expect(getParagraph).toHaveAttribute("id", "empty-value");
@@ -43,10 +41,6 @@ describe("<renderAllTodos> component", () => {
           "data-testid",
           "data-test-empty-value"
         );
-      });
-
-      it("should be possible to render the conditional if there is no task", () => {
-        const getParagraph = screen.getByText(TEXT_IN_EMPTY_PARAGRAPH);
 
         expect(getParagraph.tagName).toBe("P");
         expect(getParagraph.innerHTML).toBe("empty...");

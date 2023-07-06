@@ -17,8 +17,11 @@ export default function ButtonAddTask() {
         id: uuidv4(),
         description: taskValue,
       });
-      setAllTodo([...todos, createAndGetNewTask[0]]);
-      setTaskValue("");
+
+      if (createAndGetNewTask) {
+        setAllTodo([...todos, createAndGetNewTask]);
+        setTaskValue("");
+      }
     } catch {
       console.log("error in save task");
     }

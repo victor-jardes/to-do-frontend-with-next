@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  screen,
-  render,
-  within,
-  waitForElementToBeRemoved,
-} from "@testing-library/react";
+import { screen, render, within, waitFor } from "@testing-library/react";
 import Todo from "@/app/todo/Todo";
 import TodoProvider from "@/app/context/todoProvider";
 import userEvent from "@testing-library/user-event";
@@ -41,13 +36,16 @@ describe("<Todo> component", () => {
 
     await user.type(getInputForWrite, TASK_FOR_WRITE);
 
-    expect(getInputForWrite.getAttribute("value")).toBe(TASK_FOR_WRITE);
+    await waitFor(() => {
+      expect(getInputForWrite.getAttribute("value")).toBe(TASK_FOR_WRITE);
+      expect(getButtonAdd).toBeEnabled();
+    });
 
-    expect(getButtonAdd).toBeEnabled();
     await user.click(getButtonAdd);
-
-    await waitForElementToBeRemoved(() => {
-      return screen.getByTestId(DATA_TEST_ID_EMPTY_CONDITIONAL);
+    await waitFor(() => {
+      expect(
+        screen.queryByTestId(DATA_TEST_ID_EMPTY_CONDITIONAL)
+      ).not.toBeInTheDocument();
     });
 
     expect(getInputForWrite.getAttribute("value")).toBe("");

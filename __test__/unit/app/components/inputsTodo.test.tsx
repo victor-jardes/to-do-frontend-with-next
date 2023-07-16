@@ -14,7 +14,7 @@ describe("<InputsTodo> component test", () => {
       );
     });
 
-    it("should be able render `input` and your attributes", () => {
+    it("should be able render `input` and your attributes", async () => {
       const INPUT_LABEL_VALUE = "Write you task here";
 
       const INPUT_ID = "input-for-write-task";
@@ -23,15 +23,19 @@ describe("<InputsTodo> component test", () => {
       const INPUT_DATA_TEST_ID = "data-test-write-todo";
 
       const inputWriteTask = screen.getByLabelText(INPUT_LABEL_VALUE);
-
-      expect(inputWriteTask).toHaveAttribute("id", INPUT_ID);
-      expect(inputWriteTask).toHaveAttribute("type", INPUT_TYPE);
-      expect(inputWriteTask).toHaveAttribute("placeholder", MY_PLACE_HOLDER);
-      expect(inputWriteTask).toHaveAttribute("data-testid", INPUT_DATA_TEST_ID);
-      expect(inputWriteTask).toHaveAttribute("value", "");
+      await waitFor(() => {
+        expect(inputWriteTask).toHaveAttribute("id", INPUT_ID);
+        expect(inputWriteTask).toHaveAttribute("type", INPUT_TYPE);
+        expect(inputWriteTask).toHaveAttribute("placeholder", MY_PLACE_HOLDER);
+        expect(inputWriteTask).toHaveAttribute(
+          "data-testid",
+          INPUT_DATA_TEST_ID
+        );
+        expect(inputWriteTask).toHaveAttribute("value", "");
+      });
     });
 
-    it("should be able render `button` and your attributes", () => {
+    it("should be able render `button` and your attributes", async () => {
       const BUTTON_ID = "button-add-todo";
       const BUTTON_TYPE = "button";
       const BUTTON_VALUE = "ADD";
@@ -39,12 +43,14 @@ describe("<InputsTodo> component test", () => {
 
       const getButtonAdd = screen.getByLabelText("ADD your todo");
 
-      expect(getButtonAdd).toHaveAttribute("id", BUTTON_ID);
-      expect(getButtonAdd).toHaveAttribute("type", BUTTON_TYPE);
-      expect(getButtonAdd).toHaveAttribute("value", BUTTON_VALUE);
-      expect(getButtonAdd).toHaveAttribute("data-testid", BUTTON_DATA_TESTID);
+      await waitFor(() => {
+        expect(getButtonAdd).toHaveAttribute("id", BUTTON_ID);
+        expect(getButtonAdd).toHaveAttribute("type", BUTTON_TYPE);
+        expect(getButtonAdd).toHaveAttribute("value", BUTTON_VALUE);
+        expect(getButtonAdd).toHaveAttribute("data-testid", BUTTON_DATA_TESTID);
 
-      expect(getButtonAdd).toBeDisabled();
+        expect(getButtonAdd).toBeDisabled();
+      });
     });
   });
 
@@ -90,8 +96,10 @@ describe("<InputsTodo> component test", () => {
 
       await user.type(getMyInputWithLabel, myGenericValueForWriteTask);
 
-      expect(getMyInputWithLabel).toHaveValue(myGenericValueForWriteTask);
-      expect(getMyButtonWithLabel).not.toBeDisabled();
+      await waitFor(() => {
+        expect(getMyInputWithLabel).toHaveValue(myGenericValueForWriteTask);
+        expect(getMyButtonWithLabel).not.toBeDisabled();
+      });
     });
 
     it("should be able add task written in `input` text and add with `button`", async () => {

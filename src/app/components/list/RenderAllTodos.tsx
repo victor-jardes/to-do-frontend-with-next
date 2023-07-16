@@ -1,6 +1,5 @@
 "use client";
 
-import { ITodo } from "@/types/ITodo";
 import { useGetContextForList } from "./utils/useGetContextForList";
 import { Fragment } from "react";
 
@@ -14,56 +13,48 @@ export function RenderEmpty() {
   );
 }
 
-interface IRenderAllTodos {
-  todos?: ITodo[];
-}
-export default function RenderAllTodos({
-  todos: listWithTodosForTest,
-}: IRenderAllTodos) {
-  let todos: ITodo[];
-
-  const { finishedTodo, todos: todosInContext } = useGetContextForList();
-
-  if (listWithTodosForTest) {
-    todos = listWithTodosForTest;
-  } else {
-    todos = todosInContext;
-  }
+export default function RenderAllTodos() {
+  const { finishedTodo, todos } = useGetContextForList();
 
   return (
     <>
-      {todos.length <= 0 && <RenderEmpty />}
-      <ul
-        id="list-with-todos"
-        role="list"
-        data-testid="data-test-list-with-todos"
-      >
-        {todos.map(({ id, description, isFinished }) => (
-          <Fragment key={id}>
-            <li
-              style={
-                isFinished
-                  ? { backgroundColor: "red" }
-                  : { backgroundColor: "inherit" }
-              }
-              id={id}
-              data-testid={`data-test-item-in-list-${id}`}
-              value={description}
-            >
-              {description}
-            </li>
-            <button
-              id={`button-complet-${id}`}
-              type="button"
-              value={id}
-              onClick={(element) => finishedTodo(element.currentTarget.value)}
-              data-testid={`data-test-button-complet-${id}`}
-            >
-              COMPLET
-            </button>
-          </Fragment>
-        ))}
-      </ul>
+      {todos.length <= 0 ? (
+        <RenderEmpty />
+      ) : (
+        <ul
+          id="list-with-todos"
+          role="list"
+          data-testid="data-test-list-with-todos"
+        >
+          {todos.map(({ id, description, isFinished }) => (
+            <Fragment key={id}>
+              <li
+                style={
+                  isFinished
+                    ? { backgroundColor: "red" }
+                    : { backgroundColor: "inherit" }
+                }
+                id={id}
+                data-testid={`data-test-item-in-list-${id}`}
+                value={description}
+              >
+                {description}
+              </li>
+              <button
+                id={`button-complet-${id}`}
+                type="button"
+                value={id}
+                onClick={(element) => finishedTodo(element.currentTarget.value)}
+                data-testid={`data-test-button-complet-${id}`}
+              >
+                COMPLET
+              </button>
+            </Fragment>
+          ))}
+        </ul>
+      )}
+
+      {}
     </>
   );
 }

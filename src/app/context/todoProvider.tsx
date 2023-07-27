@@ -2,12 +2,13 @@
 
 import { ITodo, TodoContextType } from "@/types/ITodo";
 import { TodoContext } from "./todoContext";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { IComponentChildren } from "@/types/IComponentChildren";
 import {
   dispatchSaveTodo,
   dispatchFinishedTodo,
 } from "@/app/context/utils/dispatchTodo";
+import { requestForGetAllTasks } from "../api/todo/getAllTasks";
 
 export default function TodoProvider({ children }: IComponentChildren) {
   const [todos, setAllTodo] = useState<ITodo[]>([]);
@@ -24,6 +25,19 @@ export default function TodoProvider({ children }: IComponentChildren) {
   const finishedTodo = (id: string) => {
     dispatchFinishedTodo({ id, setAllTodo, todos });
   };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await requestForGetAllTasks();
+        setAllTodo(response);
+      } catch {
+        console.log("error in request");
+      }
+    };
+
+    fetchData();
+  }, []);
 
   const values: TodoContextType = {
     todos,

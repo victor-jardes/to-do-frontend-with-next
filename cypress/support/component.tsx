@@ -1,4 +1,8 @@
 import TodoProvider from "@/app/context/todoProvider";
+
+import("../../mocks/index").then(({ setupMocks }) => {
+  setupMocks();
+});
 // ***********************************************************
 // This example support/component.ts is processed and
 // loaded automatically before your test files.

@@ -1,5 +1,5 @@
 import React from "react";
-import { screen, render, within } from "@testing-library/react";
+import { screen, render, within, waitFor } from "@testing-library/react";
 import Todo from "@/app/todo/Todo";
 import TodoProvider from "@/app/context/todoProvider";
 import userEvent from "@testing-library/user-event";
@@ -25,7 +25,6 @@ describe("<Todo> component", () => {
 
     const getInputForWrite = screen.getByLabelText(INPUT_WRITE_LABEtEXT);
     const getButtonAdd = screen.getByLabelText(BUTTON_LABEL_ADD_TASK);
-
     expect(getInputForWrite).toBeVisible();
     expect(getButtonAdd).toBeVisible();
 
@@ -37,12 +36,17 @@ describe("<Todo> component", () => {
 
     await user.type(getInputForWrite, TASK_FOR_WRITE);
 
-    expect(getInputForWrite.getAttribute("value")).toBe(TASK_FOR_WRITE);
-
-    expect(getButtonAdd).toBeEnabled();
+    await waitFor(() => {
+      expect(getInputForWrite.getAttribute("value")).toBe(TASK_FOR_WRITE);
+      expect(getButtonAdd).toBeEnabled();
+    });
 
     await user.click(getButtonAdd);
-    expect(getEmptyParagraph).not.toBeVisible();
+    await waitFor(() => {
+      expect(
+        screen.queryByTestId(DATA_TEST_ID_EMPTY_CONDITIONAL)
+      ).not.toBeInTheDocument();
+    });
 
     expect(getInputForWrite.getAttribute("value")).toBe("");
     expect(getButtonAdd).toBeDisabled();

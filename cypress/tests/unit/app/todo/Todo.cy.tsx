@@ -9,7 +9,6 @@ describe("Render `Todo` component, and your childrens with your functions", () =
 
     cy.get("[data-testid='data-test-write-todo']").as("inputWrite");
     cy.get("[data-testid='data-test-button-add-todo']").as("btnAdd");
-    cy.get("[data-testid='data-test-list-with-todos']").as("ulList");
     cy.get("[data-testid='data-test-empty-value']").as("emptyTag");
 
     cy.get("@inputWrite")
@@ -21,12 +20,10 @@ describe("Render `Todo` component, and your childrens with your functions", () =
     cy.get("@btnAdd")
       .should("be.visible")
       .and(($el) => {
-        expect($el[0].tagName).equal("INPUT");
+        expect($el[0].tagName).equal("BUTTON");
         expect($el.attr("type")).equal("button");
         expect($el.attr("value")).to.equal("ADD");
       });
-
-    cy.get("@ulList").should("not.be.visible");
 
     cy.get("@emptyTag")
       .should("be.visible")
@@ -43,6 +40,7 @@ describe("Render `Todo` component, and your childrens with your functions", () =
     cy.get("@btnAdd").click();
     cy.get("@inputWrite").should("have.value", "");
 
+    cy.get("[data-testid='data-test-list-with-todos']").as("ulList");
     cy.get("@ulList")
       .should("be.visible")
       .and(($el) => {

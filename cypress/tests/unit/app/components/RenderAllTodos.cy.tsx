@@ -1,8 +1,10 @@
 /// <reference types="cypress" />
 
 import React from "react";
-import RenderAllTodos from "../../../../../src/app/components/RenderAllTodos";
+import RenderAllTodos from "../../../../../src/app/components/list/RenderAllTodos";
 import { ITodo } from "@/types/ITodo";
+import { rest } from "msw";
+import { mswWorker } from "../../../../../mocks/mswWorker";
 
 const MY_ALL_TODOS = [
   {
@@ -26,7 +28,7 @@ describe("<RenderALlTodos /> components", () => {
   it("should be able rendering `empty` conditional function containing `<p>` tag HTML", () => {
     const EMPTY_VALUE_RENDER = "[data-testid='data-test-empty-value']";
 
-    cy.mountTodoApp(<RenderAllTodos todos={[]} />);
+    cy.mountTodoApp(<RenderAllTodos />);
     cy.get(EMPTY_VALUE_RENDER).should("be.visible", true);
   });
 
@@ -35,7 +37,13 @@ describe("<RenderALlTodos /> components", () => {
     const DATA_TESTID_LIST_WITH_TODOS =
       "[data-testid='data-test-list-with-todos']";
 
-    cy.mountTodoApp(<RenderAllTodos todos={myValues} />);
+    mswWorker.use(
+      rest.get("http://localhost:3001/todo/findAll", (req, res, ctx) => {
+        return res(ctx.status(200), ctx.json(myValues));
+      })
+    );
+
+    cy.mountTodoApp(<RenderAllTodos />);
 
     cy.get(DATA_TESTID_LIST_WITH_TODOS)
       .should("be.visible")

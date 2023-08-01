@@ -11,6 +11,9 @@ module.exports = {
     "!<rootDir>/.next/**",
     "!<rootDir>/*.config.js",
     "!<rootDir>/coverage/**",
+    "!<rootDir>/mocks/**",
+    "!<rootDir>/jest.config.ts",
+    "!<rootDir>/src/app/context/**",
   ],
   moduleNameMapper: {
     // Handle CSS imports (with CSS modules)

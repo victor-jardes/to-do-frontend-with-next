@@ -28,6 +28,7 @@ module.exports = {
     // "^@/components/(.*)$": "<rootDir>/components/$1",
     "^@/app/(.*)$": "<rootDir>/src/app/$1",
     "^@/types/(.*)$": "<rootDir>/src/types/$1",
+    "^@/apiMocks/(.*)$": "<rootDir>/mocks/$1",
   },
   // Add more setup options before each test is run
   // setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],

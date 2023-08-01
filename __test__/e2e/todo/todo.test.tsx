@@ -1,6 +1,6 @@
 import React from "react";
 import { screen, render, within, waitFor } from "@testing-library/react";
-import Todo from "@/app/todo/Todo";
+import Todo from "@/app/todo/page";
 import TodoProvider from "@/app/context/todoProvider";
 import userEvent from "@testing-library/user-event";
 

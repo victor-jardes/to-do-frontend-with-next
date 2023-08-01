@@ -14,6 +14,7 @@ module.exports = {
     "!<rootDir>/mocks/**",
     "!<rootDir>/jest.config.ts",
     "!<rootDir>/src/app/context/**",
+    "!<rootDir>/cypress/**",
   ],
   moduleNameMapper: {
     // Handle CSS imports (with CSS modules)

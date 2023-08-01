@@ -1,7 +1,7 @@
 import React from "react";
 import { screen, render, within, waitFor } from "@testing-library/react";
 import TodoProvider from "@/app/context/todoProvider";
-import RenderAllTodos from "@/app/todo/components/list/RenderAllTodos";
+import RenderAllTodos from "@/app/(todo)/components/list/RenderAllTodos";
 import { ITodo } from "@/types/ITodo";
 import { rest } from "msw";
 import { mswServer } from "@/apiMocks/mswServer";

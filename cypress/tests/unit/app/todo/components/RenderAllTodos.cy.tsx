@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
 import React from "react";
-import RenderAllTodos from "@/app/todo/components/list/RenderAllTodos";
+import RenderAllTodos from "@/app/(todo)/components/list/RenderAllTodos";
 import { ITodo } from "@/types/ITodo";
 import { rest } from "msw";
 import { mswWorker } from "@/apiMocks/mswWorker";

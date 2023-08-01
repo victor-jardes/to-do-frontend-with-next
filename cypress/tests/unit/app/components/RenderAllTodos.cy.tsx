@@ -1,10 +1,10 @@
 /// <reference types="cypress" />
 
 import React from "react";
-import RenderAllTodos from "../../../../../src/app/components/list/RenderAllTodos";
+import RenderAllTodos from "../../../../../src/app/todo/components/list/RenderAllTodos";
 import { ITodo } from "@/types/ITodo";
 import { rest } from "msw";
-import { mswWorker } from "../../../../../mocks/mswWorker";
+import { mswWorker } from "@/apiMocks/mswWorker";
 
 const MY_ALL_TODOS = [
   {

@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
 import React from "react";
-import Todo from "../../../../../src/app/todo/Todo";
+import Todo from "@/app/page";
 
 describe("Render `Todo` component, and your childrens with your functions", () => {
   it("should be able reder `Input...` and `Render...` components", () => {

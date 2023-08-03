@@ -11,6 +11,10 @@ module.exports = {
     "!<rootDir>/.next/**",
     "!<rootDir>/*.config.js",
     "!<rootDir>/coverage/**",
+    "!<rootDir>/mocks/**",
+    "!<rootDir>/jest.config.ts",
+    "!<rootDir>/src/app/context/**",
+    "!<rootDir>/cypress/**",
   ],
   moduleNameMapper: {
     // Handle CSS imports (with CSS modules)
@@ -28,6 +32,7 @@ module.exports = {
     // "^@/components/(.*)$": "<rootDir>/components/$1",
     "^@/app/(.*)$": "<rootDir>/src/app/$1",
     "^@/types/(.*)$": "<rootDir>/src/types/$1",
+    "^@/apiMocks/(.*)$": "<rootDir>/mocks/$1",
   },
   // Add more setup options before each test is run
   // setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],

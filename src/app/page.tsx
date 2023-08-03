@@ -1,4 +1,4 @@
-import Todo from "./todo/Todo";
+import Todo from "./(todo)/page";
 
 export default function Home() {
   return (

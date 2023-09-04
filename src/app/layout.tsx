@@ -1,6 +1,7 @@
 import TodoProvider from "./context/todoProvider";
 import "./globals.css";
 import { Inter } from "next/font/google";
+import StyledComponentsRegistry from "@/utils/lib/styled-components/registry";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,7 +18,9 @@ export default function RootLayout({
   return (
     <html lang="pt-br">
       <body>
-        <TodoProvider>{children}</TodoProvider>
+        <StyledComponentsRegistry>
+          <TodoProvider>{children}</TodoProvider>
+        </StyledComponentsRegistry>
       </body>
     </html>
   );

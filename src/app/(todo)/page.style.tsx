@@ -4,4 +4,6 @@ import styled from "styled-components";
 
 export const StyledMainTodoPage = styled.main`
   background-color: red;
+  display: flex;
+  flex-direction: column;
 `;

@@ -17,13 +17,13 @@ export default function InputWriteTask() {
 
   return (
     <>
-      <label htmlFor="input-for-write-task">Write you task here</label>
+      <label htmlFor="input-for-write-task" />
       <StyledInputTodoWriteTask
         id="input-for-write-task"
         type="text"
         value={taskValue}
         onChange={(e) => handleWriteTask(e)}
-        placeholder="EX: wash to car"
+        placeholder="Write you task here"
         data-testid="data-test-write-todo"
       />
     </>

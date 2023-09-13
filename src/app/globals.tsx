@@ -5,6 +5,11 @@ import { createGlobalStyle } from "styled-components";
 const styled = { createGlobalStyle };
 
 export const GlobalStyle = styled.createGlobalStyle`
+  *,
+  *:before,
+  *:after {
+    box-sizing: inherit;
+  }
   html {
     box-sizing: border-box;
     font-size: 62.5%;

@@ -3,6 +3,7 @@
 import { ITodo, TodoContextType } from "@/types/ITodo";
 import { useGetContextForList } from "./utils/useGetContextForList";
 import { Fragment } from "react";
+import { BlockWithListOfAllTodos } from "./renderAllTodos.style";
 
 export function RenderEmpty() {
   return (
@@ -55,22 +56,24 @@ export default function RenderAllTodos() {
       {todos.length <= 0 ? (
         <RenderEmpty />
       ) : (
-        <ul
-          id="list-with-todos"
-          role="list"
-          data-testid="data-test-list-with-todos"
-        >
-          {todos.map(({ id, description, isFinished }) => (
-            <Fragment key={id}>
-              <ListWithtodos
-                id={id}
-                isFinished={isFinished}
-                description={description}
-                finishedTodo={finishedTodo}
-              />
-            </Fragment>
-          ))}
-        </ul>
+        <BlockWithListOfAllTodos>
+          <ul
+            id="list-with-todos"
+            role="list"
+            data-testid="data-test-list-with-todos"
+          >
+            {todos.map(({ id, description, isFinished }) => (
+              <Fragment key={id}>
+                <ListWithtodos
+                  id={id}
+                  isFinished={isFinished}
+                  description={description}
+                  finishedTodo={finishedTodo}
+                />
+              </Fragment>
+            ))}
+          </ul>
+        </BlockWithListOfAllTodos>
       )}
     </>
   );

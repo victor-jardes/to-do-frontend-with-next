@@ -3,7 +3,12 @@
 import { ITodo, TodoContextType } from "@/types/ITodo";
 import { useGetContextForList } from "./utils/useGetContextForList";
 import { Fragment } from "react";
-import { BlockWithListOfAllTodos } from "./renderAllTodos.style";
+import {
+  BlockWithListOfAllTodos,
+  StyledListItemWithTask,
+  ListWraper,
+  TextContainer,
+} from "./renderAllTodos.style";
 
 export function RenderEmpty() {
   return (
@@ -22,19 +27,21 @@ export function ListWithtodos({
   finishedTodo,
 }: ITodo & Pick<TodoContextType, "finishedTodo">) {
   return (
-    <>
-      <li
-        style={
-          isFinished
-            ? { backgroundColor: "red" }
-            : { backgroundColor: "inherit" }
-        }
-        id={id}
-        data-testid={`data-test-item-in-list-${id}`}
-        value={description}
-      >
-        {description}
-      </li>
+    <ListWraper>
+      <TextContainer>
+        <StyledListItemWithTask
+          style={
+            isFinished
+              ? { backgroundColor: "red" }
+              : { backgroundColor: "inherit" }
+          }
+          id={id}
+          data-testid={`data-test-item-in-list-${id}`}
+          value={description}
+        >
+          {description}
+        </StyledListItemWithTask>
+      </TextContainer>
       <button
         id={`button-complet-${id}`}
         type="button"
@@ -44,7 +51,7 @@ export function ListWithtodos({
       >
         COMPLET
       </button>
-    </>
+    </ListWraper>
   );
 }
 

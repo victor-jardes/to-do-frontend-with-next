@@ -10,16 +10,23 @@ export const BlockWithListOfAllTodos = styled.div`
 `;
 
 export const ListWraper = styled.div`
-  display: grid;
+  display: flex;
   gap: 1.6rem;
   grid-template-columns: 1fr auto;
+  margin: 0.7rem 0;
 `;
 
 export const TextContainer = styled.div`
   flex-grow: 1;
+  background-color: rgba(245, 246, 250, 0.979);
+  border-radius: 0.5rem;
+  height: 3rem;
+  max-height: 3rem;
 `;
 
 export const StyledListItemWithTask = styled.li`
   font-size: 1.6rem;
+  list-style: none;
+  text-align: justify;
   white-space: normal;
 `;

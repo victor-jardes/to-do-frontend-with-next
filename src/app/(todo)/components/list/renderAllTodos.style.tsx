@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const BlockWithListOfAllTodos = styled.div`
   border-color: black;
@@ -12,21 +12,31 @@ export const BlockWithListOfAllTodos = styled.div`
 export const ListWraper = styled.div`
   display: flex;
   gap: 1.6rem;
-  grid-template-columns: 1fr auto;
   margin: 0.7rem 0;
 `;
 
 export const TextContainer = styled.div`
-  flex-grow: 1;
+  align-self: center;
   background-color: rgba(245, 246, 250, 0.979);
   border-radius: 0.5rem;
-  height: 3rem;
-  max-height: 3rem;
+  flex-grow: 1;
+  height: max-content;
+  min-height: max-content;
 `;
 
-export const StyledListItemWithTask = styled.li`
+const notFinishedTaskStyle = css`
   font-size: 1.6rem;
   list-style: none;
   text-align: justify;
   white-space: normal;
+`;
+
+const finishedTaskStyle = css`
+  ${notFinishedTaskStyle}
+  color: grey;
+  text-decoration: line-through;
+`;
+
+export const StyledListItemWithTask = styled.li<{ $isFinished: boolean }>`
+  ${(props) => (props.$isFinished ? finishedTaskStyle : notFinishedTaskStyle)}
 `;

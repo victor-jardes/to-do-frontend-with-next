@@ -28,7 +28,6 @@ const notFinishedTaskStyle = css`
   font-size: 1.6rem;
   list-style: none;
   text-align: justify;
-  white-space: normal;
 `;
 
 const finishedTaskStyle = css`
@@ -38,5 +37,6 @@ const finishedTaskStyle = css`
 `;
 
 export const StyledListItemWithTask = styled.li<{ $isFinished: boolean }>`
+  white-space: normal;
   ${(props) => (props.$isFinished ? finishedTaskStyle : notFinishedTaskStyle)}
 `;

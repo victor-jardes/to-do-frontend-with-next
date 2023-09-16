@@ -2,11 +2,11 @@ import styled, { css } from "styled-components";
 
 export const BlockWithListOfAllTodos = styled.div`
   border-color: black;
+  border-radius: 0.4rem;
   border-style: solid;
   height: 95%;
   margin: auto;
   width: 98%;
-  border-radius: 0.4rem;
 `;
 
 export const ListWraper = styled.div`

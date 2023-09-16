@@ -30,11 +30,7 @@ export function ListWithtodos({
     <ListWraper>
       <TextContainer>
         <StyledListItemWithTask
-          style={
-            isFinished
-              ? { backgroundColor: "red" }
-              : { backgroundColor: "inherit" }
-          }
+          $isFinished={isFinished}
           id={id}
           data-testid={`data-test-item-in-list-${id}`}
           value={description}

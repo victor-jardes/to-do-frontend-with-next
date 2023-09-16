@@ -5,6 +5,7 @@ import { TodoContext } from "@/app/context/todoContext";
 import { TodoContextType } from "@/types/ITodo";
 import { useContext } from "react";
 import { v4 as uuidv4 } from "uuid";
+import { StyledButtonTodoForAddTask } from "./buttonAddTask.style";
 
 export default function ButtonAddTask() {
   const { setTaskValue, taskValue, setAllTodo, todos } = useContext(
@@ -29,8 +30,8 @@ export default function ButtonAddTask() {
 
   return (
     <>
-      <label htmlFor="button-add-todo">ADD your todo</label>
-      <button
+      <label htmlFor="button-add-todo" />
+      <StyledButtonTodoForAddTask
         id="button-add-todo"
         type="button"
         value="ADD"
@@ -38,8 +39,8 @@ export default function ButtonAddTask() {
         disabled={taskValue.length >= 2 ? false : true}
         data-testid="data-test-button-add-todo"
       >
-        ADD
-      </button>
+        ADD your task
+      </StyledButtonTodoForAddTask>
     </>
   );
 }

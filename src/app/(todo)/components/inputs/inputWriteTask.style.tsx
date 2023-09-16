@@ -15,7 +15,7 @@ export const StyledInputTodoWriteTask = styled.input`
   &:focus {
     background-color: rgba(255, 255, 255, 0.973);
     border-radius: 0.2rem;
-    outline: 0.2rem solid #e6f7ef;
+    outline: 0.2rem solid #78d2f3;
     outline-offset: 0.1rem;
   }
 `;

@@ -1,14 +1,11 @@
 "use client";
 
-import { ITodo, TodoContextType } from "@/types/ITodo";
 import { useGetContextForList } from "./utils/useGetContextForList";
-import { Fragment } from "react";
-import {
-  BlockWithListOfAllTodos,
-  StyledListItemWithTask,
-  ListWraper,
-  TextContainer,
-} from "./renderAllTodos.style";
+import React, { useState } from "react";
+import { BlockWithListOfAllTodos } from "./renderAllTodos.style";
+import { NavigateTodo } from "./navigateTodo/NavigateTodo";
+import { ListWithTodos } from "./listWithTodos/ListWithTodos";
+import { ItemWithTasks } from "./listWithTodos/components/ItemWithTask.li";
 
 export function RenderEmpty() {
   return (
@@ -20,64 +17,36 @@ export function RenderEmpty() {
   );
 }
 
-export function ListWithtodos({
-  id,
-  isFinished,
-  description,
-  finishedTodo,
-}: ITodo & Pick<TodoContextType, "finishedTodo">) {
-  return (
-    <ListWraper>
-      <TextContainer>
-        <StyledListItemWithTask
-          $isFinished={isFinished}
-          id={id}
-          data-testid={`data-test-item-in-list-${id}`}
-          value={description}
-        >
-          {description}
-        </StyledListItemWithTask>
-      </TextContainer>
-      <button
-        id={`button-complet-${id}`}
-        type="button"
-        value={id}
-        onClick={(element) => finishedTodo(element.currentTarget.value)}
-        data-testid={`data-test-button-complet-${id}`}
-      >
-        COMPLET
-      </button>
-    </ListWraper>
-  );
-}
-
 export default function RenderAllTodos() {
-  const { finishedTodo, todos } = useGetContextForList();
+  const { todos } = useGetContextForList();
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage] = useState<number>(5);
 
   return (
     <>
-      {todos.length <= 0 ? (
-        <RenderEmpty />
-      ) : (
-        <BlockWithListOfAllTodos>
-          <ul
-            id="list-with-todos"
-            role="list"
-            data-testid="data-test-list-with-todos"
-          >
-            {todos.map(({ id, description, isFinished }) => (
-              <Fragment key={id}>
-                <ListWithtodos
-                  id={id}
-                  isFinished={isFinished}
-                  description={description}
-                  finishedTodo={finishedTodo}
-                />
-              </Fragment>
-            ))}
-          </ul>
-        </BlockWithListOfAllTodos>
-      )}
+      <div>
+        {todos.length <= 0 ? (
+          <RenderEmpty />
+        ) : (
+          <BlockWithListOfAllTodos>
+            <ListWithTodos>
+              <ItemWithTasks
+                currentPage={currentPage}
+                itemsPerPage={itemsPerPage}
+              />
+            </ListWithTodos>
+          </BlockWithListOfAllTodos>
+        )}
+      </div>
+      <div>
+        <NavigateTodo
+          currentPage={currentPage}
+          itemsPerPage={itemsPerPage}
+          setCurrentPage={setCurrentPage}
+          todos={todos}
+        />
+      </div>
     </>
   );
 }

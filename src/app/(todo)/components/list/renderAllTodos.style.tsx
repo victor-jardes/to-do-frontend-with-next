@@ -1,5 +1,9 @@
 import styled, { css } from "styled-components";
 
+export const RenderAllTodosWraper = styled.div`
+  margin: 0.5rem;
+`;
+
 export const BlockWithListOfAllTodos = styled.div`
   border-color: black;
   border-radius: 0.4rem;

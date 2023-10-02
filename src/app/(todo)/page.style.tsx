@@ -8,8 +8,9 @@ export const StyledMainTodoPage = styled.main`
   border-radius: 0.3rem;
   display: flex;
   flex-direction: column;
-  height: fit-content;
+  height: 50vh;
   margin: auto;
+  min-height: 50vh;
   max-height: fit-content;
   min-width: 80%;
   width: 85%;

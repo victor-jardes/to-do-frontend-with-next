@@ -4,7 +4,10 @@ import { TodoContext } from "@/app/context/todoContext";
 import { InputValueAttibute } from "@/types/IInputValueAttribute";
 import { TodoContextType } from "@/types/ITodo";
 import { useContext } from "react";
-import { StyledInputTodoWriteTask } from "./inputWriteTask.style";
+import {
+  StyledInputTodoWriteTask,
+  StyledWraperWritInput,
+} from "./inputWriteTask.style";
 
 export default function InputWriteTask() {
   const { setTaskValue, taskValue } = useContext(
@@ -16,7 +19,7 @@ export default function InputWriteTask() {
   };
 
   return (
-    <>
+    <StyledWraperWritInput>
       <label htmlFor="input-for-write-task" />
       <StyledInputTodoWriteTask
         id="input-for-write-task"
@@ -26,6 +29,6 @@ export default function InputWriteTask() {
         placeholder="Write you task here"
         data-testid="data-test-write-todo"
       />
-    </>
+    </StyledWraperWritInput>
   );
 }

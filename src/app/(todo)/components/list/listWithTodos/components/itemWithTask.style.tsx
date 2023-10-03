@@ -3,7 +3,6 @@ import styled, { css } from "styled-components";
 export const ListWraper = styled.div`
   display: flex;
   gap: 1.6rem;
-  margin: 0.7rem 0;
   height: 10%;
 `;
 

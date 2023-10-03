@@ -7,15 +7,6 @@ export const ListWraper = styled.div`
   height: 10%;
 `;
 
-export const TextContainer = styled.div`
-  align-self: center;
-  background-color: rgba(245, 246, 250, 0.979);
-  border-radius: 0.5rem;
-  flex-grow: 1;
-  height: max-content;
-  min-height: max-content;
-`;
-
 const notFinishedTaskStyle = css`
   font-size: 1.6rem;
   list-style: none;
@@ -30,5 +21,9 @@ const finishedTaskStyle = css`
 
 export const StyledListItemWithTask = styled.li<{ $isFinished: boolean }>`
   white-space: normal;
+  background-color: rgba(245, 246, 250, 0.979);
+  border-radius: 0.5rem;
+  height: 100%;
+  flex-grow: 1;
   ${(props) => (props.$isFinished ? finishedTaskStyle : notFinishedTaskStyle)}
 `;

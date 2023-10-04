@@ -2,7 +2,7 @@
 
 import { useGetContextForList } from "./utils/useGetContextForList";
 import React, { useState } from "react";
-import { BlockWithListOfAllTodos } from "./renderAllTodos.style";
+import { RenderAllTodosWraper } from "./renderAllTodos.style";
 import { NavigateTodo } from "./navigateTodo/NavigateTodo";
 import { ListWithTodos } from "./listWithTodos/ListWithTodos";
 import { ItemWithTasks } from "./listWithTodos/components/ItemWithTask.li";
@@ -24,21 +24,17 @@ export default function RenderAllTodos() {
   const [itemsPerPage] = useState<number>(5);
 
   return (
-    <>
-      <div>
-        {todos.length <= 0 ? (
-          <RenderEmpty />
-        ) : (
-          <BlockWithListOfAllTodos>
-            <ListWithTodos>
-              <ItemWithTasks
-                currentPage={currentPage}
-                itemsPerPage={itemsPerPage}
-              />
-            </ListWithTodos>
-          </BlockWithListOfAllTodos>
-        )}
-      </div>
+    <RenderAllTodosWraper>
+      {todos.length <= 0 ? (
+        <RenderEmpty />
+      ) : (
+        <ListWithTodos>
+          <ItemWithTasks
+            currentPage={currentPage}
+            itemsPerPage={itemsPerPage}
+          />
+        </ListWithTodos>
+      )}
       <div>
         <NavigateTodo
           currentPage={currentPage}
@@ -47,6 +43,6 @@ export default function RenderAllTodos() {
           todos={todos}
         />
       </div>
-    </>
+    </RenderAllTodosWraper>
   );
 }

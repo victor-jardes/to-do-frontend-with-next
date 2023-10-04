@@ -28,5 +28,16 @@ const buttonStyleEnablade = css`
 `;
 
 export const StyledButtonTodoForAddTask = styled.button`
+  align-items: center;
+  font-size: 1.8rem;
+  height: 100%;
+  width: 100%;
   ${(props) => (props.disabled ? buttonStyleDisabled : buttonStyleEnablade)}
+`;
+
+export const StyledButtonWraper = styled.div`
+  box-sizing: border-box;
+  height: 97%;
+  padding-left: 1rem;
+  width: 25.5%;
 `;

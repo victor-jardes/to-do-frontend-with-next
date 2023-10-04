@@ -11,6 +11,7 @@ export const StyledMainTodoPage = styled.main`
   height: 50vh;
   margin: auto;
   min-height: 50vh;
+  max-height: fit-content;
   min-width: 80%;
   width: 85%;
 `;

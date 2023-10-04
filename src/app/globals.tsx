@@ -20,4 +20,10 @@ export const GlobalStyle = styled.createGlobalStyle`
     margin: 0;
     padding: 0;
   }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
 `;

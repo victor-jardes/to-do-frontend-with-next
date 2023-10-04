@@ -5,7 +5,10 @@ import { TodoContext } from "@/app/context/todoContext";
 import { TodoContextType } from "@/types/ITodo";
 import { useContext } from "react";
 import { v4 as uuidv4 } from "uuid";
-import { StyledButtonTodoForAddTask } from "./buttonAddTask.style";
+import {
+  StyledButtonTodoForAddTask,
+  StyledButtonWraper,
+} from "./buttonAddTask.style";
 
 export default function ButtonAddTask() {
   const { setTaskValue, taskValue, setAllTodo, todos } = useContext(
@@ -29,7 +32,7 @@ export default function ButtonAddTask() {
   };
 
   return (
-    <>
+    <StyledButtonWraper>
       <label htmlFor="button-add-todo" />
       <StyledButtonTodoForAddTask
         id="button-add-todo"
@@ -41,6 +44,6 @@ export default function ButtonAddTask() {
       >
         ADD your task
       </StyledButtonTodoForAddTask>
-    </>
+    </StyledButtonWraper>
   );
 }

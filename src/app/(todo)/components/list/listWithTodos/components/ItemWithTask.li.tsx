@@ -1,11 +1,7 @@
 import { INavigateIndexTodo } from "@/types/INavigateTodos";
-import {
-  ListWraper,
-  StyledListItemWithTask,
-  TextContainer,
-} from "../../renderAllTodos.style";
 import { useGetContextForList } from "../../utils/useGetContextForList";
 import { ButtonFinishedTask } from "./ButtomFinishedTask.button";
+import { ListWraper, StyledListItemWithTask } from "./itemWithTask.style";
 
 export function ItemWithTasks({
   currentPage,
@@ -22,16 +18,14 @@ export function ItemWithTasks({
     <>
       {currentItems.map(({ id, description, isFinished }) => (
         <ListWraper key={id}>
-          <TextContainer>
-            <StyledListItemWithTask
-              id={id}
-              value={description}
-              $isFinished={isFinished}
-              data-testid={`data-test-item-in-list-${id}`}
-            >
-              {description}
-            </StyledListItemWithTask>
-          </TextContainer>
+          <StyledListItemWithTask
+            id={id}
+            value={description}
+            $isFinished={isFinished}
+            data-testid={`data-test-item-in-list-${id}`}
+          >
+            {description}
+          </StyledListItemWithTask>
           <ButtonFinishedTask id={id} />
         </ListWraper>
       ))}

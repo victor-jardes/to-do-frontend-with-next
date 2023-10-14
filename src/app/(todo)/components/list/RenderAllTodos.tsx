@@ -1,11 +1,11 @@
 "use client";
 
 import { useGetContextForList } from "./utils/useGetContextForList";
-import React, { useState } from "react";
+import React from "react";
 import { RenderAllTodosWraper } from "./renderAllTodos.style";
-import { NavigateTodo } from "./navigateTodo/NavigateTodo";
 import { ListWithTodos } from "./listWithTodos/ListWithTodos";
 import { ItemWithTasks } from "./listWithTodos/components/ItemWithTask.li";
+import StateNavigateInPage from "@/app/states/navigate/NavigateInPage";
 
 export function RenderEmpty() {
   return (
@@ -20,8 +20,9 @@ export function RenderEmpty() {
 export default function RenderAllTodos() {
   const { todos } = useGetContextForList();
 
-  const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState<number>(5);
+  const currentPage = StateNavigateInPage((state) => state.currentPage);
+
+  const itemsPerPage = 5;
 
   return (
     <RenderAllTodosWraper>
@@ -35,14 +36,6 @@ export default function RenderAllTodos() {
           />
         </ListWithTodos>
       )}
-      <div>
-        <NavigateTodo
-          currentPage={currentPage}
-          itemsPerPage={itemsPerPage}
-          setCurrentPage={setCurrentPage}
-          todos={todos}
-        />
-      </div>
     </RenderAllTodosWraper>
   );
 }

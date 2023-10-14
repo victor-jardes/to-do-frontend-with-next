@@ -1,30 +1,44 @@
+"use client";
 /* eslint-disable react-hooks/exhaustive-deps */
-import { INavigateIndexTodo } from "@/types/INavigateTodos";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { GoToIndexTodoPage } from "./GoToIndexTodoPage";
 import { GoToPreviousIndexTodoPage } from "./GoToPreviousIndexTodoPage";
 import { GoToNextIndexTodoPage } from "./GoToNextIndexTodoPage";
+import StateNumberOfPagesStore from "@/app/states/navigate/numberOfPages";
+import StateMultipleAndNumberInIndex from "@/app/states/navigate/multipleAndNumberInIndex";
+import StateNavigateInPage from "@/app/states/navigate/NavigateInPage";
+import { useGetContextForList } from "../utils/useGetContextForList";
 
-export function NavigateTodo({
-  currentPage,
-  itemsPerPage,
-  setCurrentPage,
-  todos,
-}: INavigateIndexTodo) {
-  const [numberOfPages, setNumberOfPages] = useState<number[]>([1]);
-  const [multipleAndNumberInIndex, setMultipleAndNumberInIndex] =
-    useState<number>(1);
-  const [moreOneNumberInIndex] = useState<number>(1);
+export function NavigateTodo() {
+  const { todos } = useGetContextForList();
+
+  const numberOfPages = StateNumberOfPagesStore((state) => state.numberOfPage);
+  const setNumberOfPages = StateNumberOfPagesStore(
+    (state) => state.setNumberOfPages
+  );
+
+  const multipleAndNumberInIndex = StateMultipleAndNumberInIndex(
+    (state) => state.multipleAndNumberInIndex
+  );
+  const setMultipleAndNumberInIndex = StateMultipleAndNumberInIndex(
+    (state) => state.setMultipleAndNumberInIndex
+  );
+
+  const currentPage = StateNavigateInPage((state) => state.currentPage);
+  const setCurrentPage = StateNavigateInPage((state) => state.setCurrentPage);
+
+  const moreOneNumberInIndex = 1;
+  const itemsPerPage = 5;
 
   useEffect(() => {
     if (!numberOfPages.includes(multipleAndNumberInIndex)) {
-      setNumberOfPages((prevPages) => [...prevPages, multipleAndNumberInIndex]);
+      setNumberOfPages(multipleAndNumberInIndex);
     }
   }, [multipleAndNumberInIndex]);
 
   useEffect(() => {
     if (itemsPerPage * multipleAndNumberInIndex < todos.length) {
-      setMultipleAndNumberInIndex((prev) => prev + moreOneNumberInIndex);
+      setMultipleAndNumberInIndex(moreOneNumberInIndex);
     }
   }, [todos]);
 

@@ -1,10 +1,10 @@
-import { IGoToPreviousIndexTodoPageParams } from "@/types/INavigateTodos";
 import { goToPreviousIndexTodoPageAux } from "./auxFunctions/goToPreviousIndexTodoPageAux";
+import StateNavigateInPage from "@/app/states/navigate/NavigateInPage";
 
-export function GoToPreviousIndexTodoPage({
-  currentPage,
-  setCurrentPage,
-}: IGoToPreviousIndexTodoPageParams) {
+export function GoToPreviousIndexTodoPage() {
+  const currentPage = StateNavigateInPage((state) => state.currentPage);
+  const setCurrentPage = StateNavigateInPage((state) => state.setCurrentPage);
+
   return (
     <button
       onClick={() =>

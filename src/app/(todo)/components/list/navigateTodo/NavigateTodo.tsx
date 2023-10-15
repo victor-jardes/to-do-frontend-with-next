@@ -6,7 +6,6 @@ import { GoToPreviousIndexTodoPage } from "./GoToPreviousIndexTodoPage";
 import { GoToNextIndexTodoPage } from "./GoToNextIndexTodoPage";
 import StateNumberOfPagesStore from "@/app/states/navigate/numberOfPages";
 import StateMultipleAndNumberInIndex from "@/app/states/navigate/multipleAndNumberInIndex";
-import StateNavigateInPage from "@/app/states/navigate/NavigateInPage";
 import { useGetContextForList } from "../utils/useGetContextForList";
 
 export function NavigateTodo() {
@@ -24,11 +23,8 @@ export function NavigateTodo() {
     (state) => state.setMultipleAndNumberInIndex
   );
 
-  const currentPage = StateNavigateInPage((state) => state.currentPage);
-  const setCurrentPage = StateNavigateInPage((state) => state.setCurrentPage);
-
-  const moreOneNumberInIndex = 1;
   const itemsPerPage = 5;
+  const moreOneNumberInIndex = 1;
 
   useEffect(() => {
     if (!numberOfPages.includes(multipleAndNumberInIndex)) {
@@ -44,24 +40,13 @@ export function NavigateTodo() {
 
   return (
     <>
-      <GoToPreviousIndexTodoPage
-        currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
-      />
+      <GoToPreviousIndexTodoPage />
+      {""}
       {numberOfPages.map((pageIndex) => (
-        <GoToIndexTodoPage
-          pageIndex={pageIndex}
-          currentPage={currentPage}
-          setCurrentPage={setCurrentPage}
-          key={pageIndex}
-        />
+        <GoToIndexTodoPage pageIndex={pageIndex} key={pageIndex} />
       ))}
-      <GoToNextIndexTodoPage
-        currentPage={currentPage}
-        itemsPerPage={itemsPerPage}
-        setCurrentPage={setCurrentPage}
-        todos={todos}
-      />
+      {""}
+      <GoToNextIndexTodoPage todos={todos} />
     </>
   );
 }

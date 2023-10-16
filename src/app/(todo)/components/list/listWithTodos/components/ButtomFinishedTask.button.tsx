@@ -1,8 +1,8 @@
 import { ITodo } from "@/types/ITodo";
-import { useGetContextForList } from "../../utils/useGetContextForList";
+import useTodos from "@/app/states/todo/useTodo";
 
 export function ButtonFinishedTask({ id }: Pick<ITodo, "id">) {
-  const { finishedTodo } = useGetContextForList();
+  const finishedTodo = useTodos((state) => state.finishedTodo);
   return (
     <button
       id={`button-complet-${id}`}

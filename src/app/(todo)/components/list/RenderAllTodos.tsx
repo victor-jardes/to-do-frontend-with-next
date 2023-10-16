@@ -4,7 +4,6 @@ import React from "react";
 import { RenderAllTodosWraper } from "./renderAllTodos.style";
 import { ListWithTodos } from "./listWithTodos/ListWithTodos";
 import { ItemWithTasks } from "./listWithTodos/components/ItemWithTask.li";
-import StateNavigateInPage from "@/app/states/navigate/NavigateInPage";
 import useTodos from "@/app/states/todo/useTodo";
 
 export function RenderEmpty() {
@@ -19,11 +18,6 @@ export function RenderEmpty() {
 
 export default function RenderAllTodos() {
   const todos = useTodos((state) => state.todos);
-  console.log(todos);
-
-  const currentPage = StateNavigateInPage((state) => state.currentPage);
-
-  const itemsPerPage = 5;
 
   return (
     <RenderAllTodosWraper>
@@ -31,10 +25,7 @@ export default function RenderAllTodos() {
         <RenderEmpty />
       ) : (
         <ListWithTodos>
-          <ItemWithTasks
-            currentPage={currentPage}
-            itemsPerPage={itemsPerPage}
-          />
+          <ItemWithTasks />
         </ListWithTodos>
       )}
     </RenderAllTodosWraper>

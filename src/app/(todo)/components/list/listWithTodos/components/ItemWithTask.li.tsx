@@ -1,14 +1,13 @@
-import { INavigateIndexTodo } from "@/types/INavigateTodos";
 import { ButtonFinishedTask } from "./ButtomFinishedTask.button";
 import { ListWraper, StyledListItemWithTask } from "./itemWithTask.style";
 import useTodos from "@/app/states/todo/useTodo";
+import StateNavigateInPage from "@/app/states/navigate/NavigateInPage";
 
-export function ItemWithTasks({
-  currentPage,
-  itemsPerPage,
-}: Pick<INavigateIndexTodo, "currentPage" | "itemsPerPage">) {
+export function ItemWithTasks() {
   const todos = useTodos((state) => state.todos);
+  const currentPage = StateNavigateInPage((state) => state.currentPage);
 
+  const itemsPerPage = 5;
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
 

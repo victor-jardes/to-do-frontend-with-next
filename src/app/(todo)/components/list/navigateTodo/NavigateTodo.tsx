@@ -6,10 +6,10 @@ import { GoToPreviousIndexTodoPage } from "./GoToPreviousIndexTodoPage";
 import { GoToNextIndexTodoPage } from "./GoToNextIndexTodoPage";
 import StateNumberOfPagesStore from "@/app/states/navigate/numberOfPages";
 import StateMultipleAndNumberInIndex from "@/app/states/navigate/multipleAndNumberInIndex";
-import { useGetContextForList } from "../utils/useGetContextForList";
+import useTodos from "@/app/states/todo/useTodo";
 
 export function NavigateTodo() {
-  const { todos } = useGetContextForList();
+  const todos = useTodos((state) => state.todos);
 
   const numberOfPages = StateNumberOfPagesStore((state) => state.numberOfPage);
   const setNumberOfPages = StateNumberOfPagesStore(

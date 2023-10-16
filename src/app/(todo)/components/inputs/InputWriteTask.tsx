@@ -1,18 +1,15 @@
 "use client";
 
-import { TodoContext } from "@/app/context/todoContext";
 import { InputValueAttibute } from "@/types/IInputValueAttribute";
-import { TodoContextType } from "@/types/ITodo";
-import { useContext } from "react";
 import {
   StyledInputTodoWriteTask,
   StyledWraperWritInput,
 } from "./inputWriteTask.style";
+import useTaskValue from "@/app/states/todo/useTaskValue";
 
 export default function InputWriteTask() {
-  const { setTaskValue, taskValue } = useContext(
-    TodoContext
-  ) as TodoContextType;
+  const taskValue = useTaskValue((state) => state.taskValue);
+  const setTaskValue = useTaskValue((state) => state.setTaskValue);
 
   const handleWriteTask = ({ target }: InputValueAttibute) => {
     setTaskValue(target.value);

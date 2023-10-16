@@ -1,19 +1,19 @@
 "use client";
 
 import { requestForCreateTask } from "@/app/api/todo/createTask";
-import { TodoContext } from "@/app/context/todoContext";
-import { TodoContextType } from "@/types/ITodo";
-import { useContext } from "react";
 import { v4 as uuidv4 } from "uuid";
 import {
   StyledButtonTodoForAddTask,
   StyledButtonWraper,
 } from "./buttonAddTask.style";
+import useTaskValue from "@/app/states/todo/useTaskValue";
+import useTodos from "@/app/states/todo/useTodo";
 
 export default function ButtonAddTask() {
-  const { setTaskValue, taskValue, setAllTodo, todos } = useContext(
-    TodoContext
-  ) as TodoContextType;
+  const taskValue = useTaskValue((state) => state.taskValue);
+  const setTaskValue = useTaskValue((state) => state.setTaskValue);
+
+  const setTodo = useTodos((state) => state.addTodo);
 
   const handleAddTask = async () => {
     try {
@@ -23,7 +23,7 @@ export default function ButtonAddTask() {
       });
 
       if (createAndGetNewTask) {
-        setAllTodo([...todos, createAndGetNewTask]);
+        setTodo(createAndGetNewTask);
         setTaskValue("");
       }
     } catch {

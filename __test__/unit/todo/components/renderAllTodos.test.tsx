@@ -1,6 +1,5 @@
 import React from "react";
 import { screen, render, within, waitFor } from "@testing-library/react";
-import TodoProvider from "@/app/context/todoProvider";
 import RenderAllTodos from "@/app/(todo)/components/list/RenderAllTodos";
 import { ITodo } from "@/types/ITodo";
 import { rest } from "msw";
@@ -30,11 +29,7 @@ describe("<renderAllTodos> component", () => {
       it("should render conditional if not contain tasks in list, and verify your attr too", async () => {
         const TEXT_IN_EMPTY_PARAGRAPH = "empty...";
 
-        render(
-          <TodoProvider>
-            <RenderAllTodos />
-          </TodoProvider>
-        );
+        render(<RenderAllTodos />);
 
         const getParagraph = screen.getByText(TEXT_IN_EMPTY_PARAGRAPH);
 
@@ -62,11 +57,7 @@ describe("<renderAllTodos> component", () => {
             })
           );
 
-          render(
-            <TodoProvider>
-              <RenderAllTodos />
-            </TodoProvider>
-          );
+          render(<RenderAllTodos />);
         });
 
         it("Should be able render `<UL>` list tag", async () => {
@@ -144,11 +135,7 @@ describe("<renderAllTodos> component", () => {
             })
           );
 
-          render(
-            <TodoProvider>
-              <RenderAllTodos />
-            </TodoProvider>
-          );
+          render(<RenderAllTodos />);
 
           await waitFor(() => {
             const getListWithTodos = screen.getByTestId(UL_DATA_TESTID);

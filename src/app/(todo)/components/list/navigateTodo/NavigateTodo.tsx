@@ -46,7 +46,7 @@ export function NavigateTodo() {
         <GoToIndexTodoPage pageIndex={pageIndex} key={pageIndex} />
       ))}
       {""}
-      <GoToNextIndexTodoPage todos={todos} />
+      <GoToNextIndexTodoPage />
     </>
   );
 }

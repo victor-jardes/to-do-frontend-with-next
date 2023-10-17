@@ -1,4 +1,3 @@
-import TodoProvider from "./context/todoProvider";
 import { Inter } from "next/font/google";
 import StyledComponentsRegistry from "@/utils/lib/styled-components/registry";
 import { GlobalStyle } from "./globals";
@@ -20,7 +19,7 @@ export default function RootLayout({
       <body>
         <StyledComponentsRegistry>
           <GlobalStyle />
-          <TodoProvider>{children}</TodoProvider>
+          {children}
         </StyledComponentsRegistry>
       </body>
     </html>

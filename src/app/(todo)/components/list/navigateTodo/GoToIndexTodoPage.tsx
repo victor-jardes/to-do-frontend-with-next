@@ -1,13 +1,9 @@
 import { IGoToIndexTodoPageParams } from "@/types/INavigateTodos";
-import { goToIndexTodoPageAux } from "./auxFunctions/goToIndexTodoPageAux";
+import StateNavigateInPage from "@/app/states/navigate/NavigateInPage";
 
 export function GoToIndexTodoPage({
-  setCurrentPage,
   pageIndex,
-}: IGoToIndexTodoPageParams) {
-  return (
-    <button onClick={() => goToIndexTodoPageAux(pageIndex, { setCurrentPage })}>
-      {pageIndex}
-    </button>
-  );
+}: Pick<IGoToIndexTodoPageParams, "pageIndex">) {
+  const setCurrentPage = StateNavigateInPage((state) => state.setCurrentPage);
+  return <button onClick={() => setCurrentPage(pageIndex)}>{pageIndex}</button>;
 }

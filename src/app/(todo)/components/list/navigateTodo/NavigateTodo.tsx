@@ -1,53 +1,52 @@
+"use client";
 /* eslint-disable react-hooks/exhaustive-deps */
-import { INavigateIndexTodo } from "@/types/INavigateTodos";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { GoToIndexTodoPage } from "./GoToIndexTodoPage";
 import { GoToPreviousIndexTodoPage } from "./GoToPreviousIndexTodoPage";
 import { GoToNextIndexTodoPage } from "./GoToNextIndexTodoPage";
+import StateNumberOfPagesStore from "@/app/states/navigate/numberOfPages";
+import StateMultipleAndNumberInIndex from "@/app/states/navigate/multipleAndNumberInIndex";
+import useTodos from "@/app/states/todo/useTodo";
 
-export function NavigateTodo({
-  currentPage,
-  itemsPerPage,
-  setCurrentPage,
-  todos,
-}: INavigateIndexTodo) {
-  const [numberOfPages, setNumberOfPages] = useState<number[]>([1]);
-  const [multipleAndNumberInIndex, setMultipleAndNumberInIndex] =
-    useState<number>(1);
-  const [moreOneNumberInIndex] = useState<number>(1);
+export function NavigateTodo() {
+  const todos = useTodos((state) => state.todos);
+
+  const numberOfPages = StateNumberOfPagesStore((state) => state.numberOfPage);
+  const setNumberOfPages = StateNumberOfPagesStore(
+    (state) => state.setNumberOfPages
+  );
+
+  const multipleAndNumberInIndex = StateMultipleAndNumberInIndex(
+    (state) => state.multipleAndNumberInIndex
+  );
+  const setMultipleAndNumberInIndex = StateMultipleAndNumberInIndex(
+    (state) => state.setMultipleAndNumberInIndex
+  );
+
+  const itemsPerPage = 5;
+  const moreOneNumberInIndex = 1;
 
   useEffect(() => {
     if (!numberOfPages.includes(multipleAndNumberInIndex)) {
-      setNumberOfPages((prevPages) => [...prevPages, multipleAndNumberInIndex]);
+      setNumberOfPages(multipleAndNumberInIndex);
     }
   }, [multipleAndNumberInIndex]);
 
   useEffect(() => {
     if (itemsPerPage * multipleAndNumberInIndex < todos.length) {
-      setMultipleAndNumberInIndex((prev) => prev + moreOneNumberInIndex);
+      setMultipleAndNumberInIndex(moreOneNumberInIndex);
     }
   }, [todos]);
 
   return (
     <>
-      <GoToPreviousIndexTodoPage
-        currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
-      />
+      <GoToPreviousIndexTodoPage />
+      {""}
       {numberOfPages.map((pageIndex) => (
-        <GoToIndexTodoPage
-          pageIndex={pageIndex}
-          currentPage={currentPage}
-          setCurrentPage={setCurrentPage}
-          key={pageIndex}
-        />
+        <GoToIndexTodoPage pageIndex={pageIndex} key={pageIndex} />
       ))}
-      <GoToNextIndexTodoPage
-        currentPage={currentPage}
-        itemsPerPage={itemsPerPage}
-        setCurrentPage={setCurrentPage}
-        todos={todos}
-      />
+      {""}
+      <GoToNextIndexTodoPage />
     </>
   );
 }

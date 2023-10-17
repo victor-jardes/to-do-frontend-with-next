@@ -1,17 +1,12 @@
 import React from "react";
 import { screen, render, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import TodoProvider from "@/app/context/todoProvider";
 import InputsTodo from "@/app/(todo)/components/inputs/InputsTodo";
 
 describe("<InputsTodo> component test", () => {
   describe("check attributes in `input` and `button` tag", () => {
     beforeEach(() => {
-      render(
-        <TodoProvider>
-          <InputsTodo />
-        </TodoProvider>
-      );
+      render(<InputsTodo />);
     });
 
     it("should be able render `input` and your attributes", async () => {
@@ -62,11 +57,7 @@ describe("<InputsTodo> component test", () => {
       const user = userEvent.setup();
       const valueForWriteTask = "verify pull request";
 
-      render(
-        <TodoProvider>
-          <InputsTodo />
-        </TodoProvider>
-      );
+      render(<InputsTodo />);
 
       const getMyInputWithLabel = screen.getByLabelText(INPUT_MY_LABEL_TEXT);
 
@@ -82,11 +73,7 @@ describe("<InputsTodo> component test", () => {
       const user = userEvent.setup();
       const myGenericValueForWriteTask = "study english";
 
-      render(
-        <TodoProvider>
-          <InputsTodo />
-        </TodoProvider>
-      );
+      render(<InputsTodo />);
 
       const getMyInputWithLabel = screen.getByLabelText(INPUT_MY_LABEL_TEXT);
       const getMyButtonWithLabel = screen.getByLabelText(BUTTON_LABEL_TEXT);
@@ -106,11 +93,7 @@ describe("<InputsTodo> component test", () => {
       const user = userEvent.setup();
       const myGenericValueForWriteTask = "study software designer";
 
-      render(
-        <TodoProvider>
-          <InputsTodo />
-        </TodoProvider>
-      );
+      render(<InputsTodo />);
 
       const getMyInputWithLabel = screen.getByLabelText(INPUT_MY_LABEL_TEXT);
       const getMyButtonWithLabel = screen.getByLabelText(BUTTON_LABEL_TEXT);

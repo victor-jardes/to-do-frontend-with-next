@@ -48,8 +48,8 @@ describe.only("<InputsTodo> component test", () => {
   });
 
   describe.skip("check functions conditionals and states", () => {
-    const INPUT_MY_LABEL_TEXT = "Write you task here";
-    const BUTTON_LABEL_TEXT = "ADD your todo";
+    const INPUT_MY_PLACEHOLDER_TEXT = "Write your task here";
+    const BUTTON_TEXT = "ADD your task";
 
     it("should be able typing task in input", async () => {
       const user = userEvent.setup();
@@ -57,14 +57,16 @@ describe.only("<InputsTodo> component test", () => {
 
       render(<InputsTodo />);
 
-      const getMyInputWithLabel = screen.getByLabelText(INPUT_MY_LABEL_TEXT);
+      const getMyInputWithPlaceholder = screen.getByPlaceholderText(
+        INPUT_MY_PLACEHOLDER_TEXT
+      );
 
-      expect(getMyInputWithLabel).toBeInTheDocument();
-      expect(getMyInputWithLabel).toHaveValue("");
+      expect(getMyInputWithPlaceholder).toBeInTheDocument();
+      expect(getMyInputWithPlaceholder).toHaveValue("");
 
-      await user.type(getMyInputWithLabel, valueForWriteTask);
+      await user.type(getMyInputWithPlaceholder, valueForWriteTask);
 
-      expect(getMyInputWithLabel).toHaveValue(valueForWriteTask);
+      expect(getMyInputWithPlaceholder).toHaveValue(valueForWriteTask);
     });
 
     it("should be able typing task and active button for add", async () => {
@@ -73,12 +75,13 @@ describe.only("<InputsTodo> component test", () => {
 
       render(<InputsTodo />);
 
-      const getMyInputWithLabel = screen.getByLabelText(INPUT_MY_LABEL_TEXT);
-      const getMyButtonWithLabel = screen.getByLabelText(BUTTON_LABEL_TEXT);
+      const getMyInputWithLabel = screen.getByPlaceholderText(
+        INPUT_MY_PLACEHOLDER_TEXT
+      );
+      const getMyButtonWithLabel = screen.getByText(BUTTON_TEXT);
 
       expect(getMyInputWithLabel).toHaveValue("");
       expect(getMyButtonWithLabel).toBeDisabled();
-
       await user.type(getMyInputWithLabel, myGenericValueForWriteTask);
 
       await waitFor(() => {
@@ -93,8 +96,10 @@ describe.only("<InputsTodo> component test", () => {
 
       render(<InputsTodo />);
 
-      const getMyInputWithLabel = screen.getByLabelText(INPUT_MY_LABEL_TEXT);
-      const getMyButtonWithLabel = screen.getByLabelText(BUTTON_LABEL_TEXT);
+      const getMyInputWithLabel = screen.getByPlaceholderText(
+        INPUT_MY_PLACEHOLDER_TEXT
+      );
+      const getMyButtonWithLabel = screen.getByText(BUTTON_TEXT);
 
       expect(getMyInputWithLabel).toHaveValue("");
       await user.type(getMyInputWithLabel, myGenericValueForWriteTask);
@@ -109,3 +114,11 @@ describe.only("<InputsTodo> component test", () => {
     });
   });
 });
+
+// await waitFor(() => {
+//   expect(getMyInputWithPlaceholder).toHaveValue(valueForWriteTask);
+// });
+
+// beforeEach(() => {
+//   useTaskValue.getState().reset();
+// });

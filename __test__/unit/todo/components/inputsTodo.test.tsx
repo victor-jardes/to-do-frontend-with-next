@@ -2,14 +2,19 @@ import React from "react";
 import { screen, render, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import InputsTodo from "@/app/(todo)/components/inputs/InputsTodo";
+import useTaskValue from "@/app/states/todo/useTaskValue";
 
-describe.only("<InputsTodo> component test", () => {
-  describe.only("check attributes in `input` and `button` tag", () => {
+describe("<InputsTodo> component test", () => {
+  beforeEach(() => {
+    useTaskValue.getState().reset();
+  });
+
+  describe("check attributes in `input` and `button` tag", () => {
     beforeEach(() => {
       render(<InputsTodo />);
     });
 
-    it.skip("should be able render `input` and your attributes", async () => {
+    it("should be able render `input` and your attributes", async () => {
       const INPUT_ID = "input-for-write-task";
       const INPUT_TYPE = "text";
       const MY_PLACE_HOLDER = "Write your task here";
@@ -28,7 +33,7 @@ describe.only("<InputsTodo> component test", () => {
       });
     });
 
-    it.only("should be able render `button` and your attributes", async () => {
+    it("should be able render `button` and your attributes", async () => {
       const BUTTON_ID = "button-add-todo";
       const BUTTON_TYPE = "button";
       const BUTTON_VALUE = "ADD";
@@ -47,7 +52,7 @@ describe.only("<InputsTodo> component test", () => {
     });
   });
 
-  describe.skip("check functions conditionals and states", () => {
+  describe("check functions conditionals and states", () => {
     const INPUT_MY_PLACEHOLDER_TEXT = "Write your task here";
     const BUTTON_TEXT = "ADD your task";
 
@@ -114,11 +119,3 @@ describe.only("<InputsTodo> component test", () => {
     });
   });
 });
-
-// await waitFor(() => {
-//   expect(getMyInputWithPlaceholder).toHaveValue(valueForWriteTask);
-// });
-
-// beforeEach(() => {
-//   useTaskValue.getState().reset();
-// });

@@ -5,16 +5,7 @@ import { RenderAllTodosWraper } from "./renderAllTodos.style";
 import { ListWithTodos } from "./listWithTodos/ListWithTodos";
 import { ItemWithTasks } from "./listWithTodos/components/ItemWithTask.li";
 import useTodos from "@/app/states/todo/useTodo";
-
-export function RenderEmpty() {
-  return (
-    <>
-      <p data-testid="data-test-empty-value" id="empty-value">
-        empty...
-      </p>
-    </>
-  );
-}
+import { EmptyListComponent } from "../emptyList/EmptyListComponent";
 
 export default function RenderAllTodos() {
   const todos = useTodos((state) => state.todos);
@@ -22,7 +13,7 @@ export default function RenderAllTodos() {
   return (
     <RenderAllTodosWraper>
       {todos.length <= 0 ? (
-        <RenderEmpty />
+        <EmptyListComponent />
       ) : (
         <ListWithTodos>
           <ItemWithTasks />

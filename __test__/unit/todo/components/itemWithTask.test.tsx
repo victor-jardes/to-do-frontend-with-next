@@ -25,15 +25,12 @@ const todos: ITodo[] = [
 
 describe("render `ItemWithTasks` component", () => {
   beforeEach(() => {
+    useTodos.getState().reset();
     mswServer.use(
       rest.get("http://localhost:3001/todo/findAll", (req, res, ctx) => {
         return res(ctx.status(200), ctx.json(todos));
       })
     );
-  });
-
-  afterEach(() => {
-    useTodos.getState().reset();
   });
 
   it("should be able render correct `tag` and `lenght` and be defined", async () => {

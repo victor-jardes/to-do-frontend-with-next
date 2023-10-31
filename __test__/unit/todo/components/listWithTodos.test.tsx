@@ -1,7 +1,7 @@
 import { ListWithTodos } from "@/app/(todo)/components/list/listWithTodos/ListWithTodos";
 import { render, screen } from "@testing-library/react";
 
-describe.only("test `ListWithTodos` component", () => {
+describe("test `ListWithTodos` component", () => {
   it("should ble able render `<ul>` correct tag ", () => {
     const UL_DATA_TESTID = "data-test-list-with-todos";
     const UL_ID = "list-with-todos";

@@ -1,6 +1,6 @@
-import { IComponentChildren } from "@/types/IComponentChildren";
+import { IOptionalComponentChildren } from "@/types/IComponentChildren";
 
-export function ListWithTodos({ children }: IComponentChildren) {
+export function ListWithTodos({ children }: IOptionalComponentChildren) {
   return (
     <>
       <ul

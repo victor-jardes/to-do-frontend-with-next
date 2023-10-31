@@ -15,6 +15,8 @@ module.exports = {
     "!<rootDir>/jest.config.ts",
     "!<rootDir>/src/app/context/**",
     "!<rootDir>/cypress/**",
+    "!<rootDir>/src/app/api/**",
+    "!<rootDir>/src/app/states/**",
   ],
   moduleNameMapper: {
     // Handle CSS imports (with CSS modules)

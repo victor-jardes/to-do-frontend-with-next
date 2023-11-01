@@ -10,7 +10,7 @@ const firstTodo: ITodo[] = [
   },
 ];
 
-describe.skip("render `ButtonFinishedTask` component", () => {
+describe("render `ButtonFinishedTask` component", () => {
   it("should be able render with correct `attr`", async () => {
     const BUTTON_TEST_ID = "data-test-button-complet-1";
     const BUTTON_FIRST_ID = `button-complet-${firstTodo[0]["id"]}`;

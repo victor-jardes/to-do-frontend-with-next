@@ -23,7 +23,7 @@ export default function InputWriteTask() {
         type="text"
         value={taskValue}
         onChange={(e) => handleWriteTask(e)}
-        placeholder="Write you task here"
+        placeholder="Write your task here"
         data-testid="data-test-write-todo"
       />
     </StyledWraperWritInput>

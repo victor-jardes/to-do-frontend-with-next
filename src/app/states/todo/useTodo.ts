@@ -9,12 +9,17 @@ type State = {
 
 type Action = {
   addTodo: ({ description, id }: Omit<ITodo, "isFinished">) => void;
-  fetchAllTodos: (todos: ITodo[]) => void;
+  fetchAllTodos: () => void;
   finishedTodo: (id: string) => void;
+  reset: () => void;
+};
+
+const initialState: State = {
+  todos: [],
 };
 
 const useTodos = create<State & Action>()((set) => ({
-  todos: [],
+  ...initialState,
   fetchAllTodos: async () => {
     const response = await requestForGetAllTasks();
     set({ todos: response });
@@ -33,6 +38,9 @@ const useTodos = create<State & Action>()((set) => ({
           : todos
       ),
     }));
+  },
+  reset: () => {
+    set(initialState);
   },
 }));
 

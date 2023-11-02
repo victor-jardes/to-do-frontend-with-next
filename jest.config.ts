@@ -17,6 +17,7 @@ module.exports = {
     "!<rootDir>/cypress/**",
     "!<rootDir>/src/app/api/**",
     "!<rootDir>/src/app/states/**",
+    "!**/*.style*.{js,jsx,ts,tsx}",
   ],
   moduleNameMapper: {
     // Handle CSS imports (with CSS modules)

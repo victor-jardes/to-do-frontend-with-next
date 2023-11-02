@@ -1,10 +1,9 @@
 import React from "react";
 import { screen, render, within, waitFor } from "@testing-library/react";
 import Todo from "@/app/(todo)/page";
-// import TodoProvider from "@/app/context/todoProvider";
 import userEvent from "@testing-library/user-event";
 
-describe.only("<Todo> component", () => {
+describe("<Todo> component", () => {
   it("should be able to complete the entire flow cycle", async () => {
     const user = userEvent.setup();
 

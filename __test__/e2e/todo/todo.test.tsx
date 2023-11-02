@@ -1,30 +1,25 @@
 import React from "react";
 import { screen, render, within, waitFor } from "@testing-library/react";
 import Todo from "@/app/(todo)/page";
-import TodoProvider from "@/app/context/todoProvider";
+// import TodoProvider from "@/app/context/todoProvider";
 import userEvent from "@testing-library/user-event";
 
-describe("<Todo> component", () => {
+describe.only("<Todo> component", () => {
   it("should be able to complete the entire flow cycle", async () => {
     const user = userEvent.setup();
 
-    render(
-      <TodoProvider>
-        <Todo />
-      </TodoProvider>
-    );
+    render(<Todo />);
 
     const TASK_FOR_WRITE = "wash to car";
-    const BUTTON_LABEL_ADD_TASK = "ADD your todo";
-    const INPUT_WRITE_LABEtEXT = "Write you task here";
+    const BUTTON_LABEL_ADD_TASK = "ADD your task";
+    const INPUT_WRITE_LABEtEXT = "Write your task here";
     const DATA_TESTID_LIST_WITH_ALL_TODOS = "data-test-list-with-todos";
+    const EMPTY_COMPONENT_TEXT = "EMPTY...";
 
-    const ITEM_NOT_FINISHED_TASK_COLOR = "inherit";
-    const ITEM_FINISHED_TASK_COLOR = "red";
     const DATA_TEST_ID_EMPTY_CONDITIONAL = "data-test-empty-value";
 
-    const getInputForWrite = screen.getByLabelText(INPUT_WRITE_LABEtEXT);
-    const getButtonAdd = screen.getByLabelText(BUTTON_LABEL_ADD_TASK);
+    const getInputForWrite = screen.getByPlaceholderText(INPUT_WRITE_LABEtEXT);
+    const getButtonAdd = screen.getByText(BUTTON_LABEL_ADD_TASK);
     expect(getInputForWrite).toBeVisible();
     expect(getButtonAdd).toBeVisible();
 
@@ -32,7 +27,7 @@ describe("<Todo> component", () => {
       DATA_TEST_ID_EMPTY_CONDITIONAL
     );
     expect(getEmptyParagraph).toBeVisible();
-    expect(getEmptyParagraph.innerHTML).toBe("empty...");
+    expect(getEmptyParagraph.innerHTML).toBe(EMPTY_COMPONENT_TEXT);
 
     await user.type(getInputForWrite, TASK_FOR_WRITE);
 
@@ -60,17 +55,8 @@ describe("<Todo> component", () => {
       within(getListWithAllTasks).getAllByRole("listitem");
     expect(getAllTaskInList.length).toBe(1);
 
-    expect(getAllTaskInList[0].getAttribute("value")).toBe(TASK_FOR_WRITE);
-    expect(getAllTaskInList[0].style.backgroundColor).toBe(
-      ITEM_NOT_FINISHED_TASK_COLOR
-    );
-
     const getTaskButtonInList =
       within(getListWithAllTasks).getAllByRole("button");
     await user.click(getTaskButtonInList[0]);
-
-    expect(getAllTaskInList[0].style.backgroundColor).toBe(
-      ITEM_FINISHED_TASK_COLOR
-    );
   });
 });

@@ -1,7 +1,7 @@
 import "@testing-library/jest-dom";
 import "@testing-library/jest-dom/extend-expect";
 
-import loadEnvValues from "@/utils/loadEnv/loadEnvValues";
+import loadEnvValues from "./src/utils/loadEnv/loadEnvValues";
 import { mswServer } from "./mocks/mswServer";
 
 beforeAll(async () => {

@@ -64,7 +64,6 @@ describe("test `ListWithTodos` component", () => {
       const getListWithTodos = screen.getByTestId(UL_DATA_TESTID);
       const getAllItensInList =
         within(getListWithTodos).getAllByRole("listitem");
-      screen.debug();
 
       expect(getAllItensInList).toBeDefined();
       expect(getAllItensInList.length).toBe(3);

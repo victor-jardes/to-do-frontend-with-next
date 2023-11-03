@@ -1,5 +1,3 @@
-import TodoProvider from "@/app/context/todoProvider";
-
 import("../../mocks/index").then(({ setupMocks }) => {
   setupMocks();
 });
@@ -43,7 +41,7 @@ declare global {
 // });
 
 Cypress.Commands.add("mountTodoApp", (component, options) => {
-  return mount(<TodoProvider>{component}</TodoProvider>);
+  return mount(component);
 });
 
 // Example use:

@@ -10,7 +10,7 @@ describe("Inputs `todo` components", () => {
     const DATA_TESTID_BUTTON_ADD_TODO =
       "[data-testid='data-test-button-add-todo']";
 
-    const INPUT_PLACEHOLDER = "EX: wash to car";
+    const INPUT_PLACEHOLDER = "Write your task here";
 
     cy.mountTodoApp(<InputsTodo />);
 

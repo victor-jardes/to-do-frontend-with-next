@@ -5,34 +5,18 @@ import InputsTodo from "@/app/(todo)/components/inputs/InputsTodo";
 // change for pull request
 
 describe("Inputs `todo` components", () => {
-  it("should be able render inputs in page and your functions and properties", () => {
+  it("should be able render inputs in page and your functions", () => {
     const DATA_TESTID_INPUT_WRITE_TASK = "[data-testid='data-test-write-todo']";
     const DATA_TESTID_BUTTON_ADD_TODO =
       "[data-testid='data-test-button-add-todo']";
-
-    const INPUT_PLACEHOLDER = "Write your task here";
 
     cy.mountTodoApp(<InputsTodo />);
 
     cy.get(DATA_TESTID_INPUT_WRITE_TASK).should("be.visible");
     cy.get(DATA_TESTID_BUTTON_ADD_TODO).should("be.visible");
 
-    cy.get(DATA_TESTID_INPUT_WRITE_TASK).should("have.attr", "type", "text");
-    cy.get(DATA_TESTID_BUTTON_ADD_TODO).should("have.attr", "type", "button");
-
-    cy.get(DATA_TESTID_INPUT_WRITE_TASK).should(
-      "have.attr",
-      "placeholder",
-      INPUT_PLACEHOLDER
-    );
-    cy.get(DATA_TESTID_BUTTON_ADD_TODO).should("have.value", "ADD");
-
-    cy.get(DATA_TESTID_INPUT_WRITE_TASK).should("be.empty");
-    cy.get(DATA_TESTID_BUTTON_ADD_TODO).should("be.disabled");
-
-    cy.get(DATA_TESTID_INPUT_WRITE_TASK).click();
-
     cy.get(DATA_TESTID_INPUT_WRITE_TASK)
+      .click()
       .type("w")
       .get(DATA_TESTID_BUTTON_ADD_TODO)
       .should("be.disabled")

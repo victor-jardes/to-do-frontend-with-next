@@ -7,6 +7,7 @@ import { GoToNextIndexTodoPage } from "./GoToNextIndexTodoPage";
 import StateNumberOfPagesStore from "@/app/states/navigate/numberOfPages";
 import StateMultipleAndNumberInIndex from "@/app/states/navigate/multipleAndNumberInIndex";
 import useTodos from "@/app/states/todo/useTodo";
+// changes for push
 
 export function NavigateTodo() {
   const todos = useTodos((state) => state.todos);

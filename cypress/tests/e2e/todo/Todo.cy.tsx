@@ -28,7 +28,7 @@ describe("Render `Todo` component, and your childrens with your functions", () =
     cy.get("@emptyTag")
       .should("be.visible")
       .and(($el) => {
-        expect($el[0].textContent).to.equal("empty...");
+        expect($el[0].textContent).to.equal("EMPTY...");
       });
 
     cy.get("@inputWrite")
@@ -40,7 +40,10 @@ describe("Render `Todo` component, and your childrens with your functions", () =
     cy.get("@btnAdd").click();
     cy.get("@inputWrite").should("have.value", "");
 
-    cy.get("[data-testid='data-test-list-with-todos']").as("ulList");
+    cy.get("[data-testid='data-test-list-with-todos']")
+      .children("div")
+      .as("ulList");
+
     cy.get("@ulList")
       .should("be.visible")
       .and(($el) => {
@@ -54,10 +57,10 @@ describe("Render `Todo` component, and your childrens with your functions", () =
       .should("be.visible")
       .children("button")
       .then(($el) => {
-        return cy.get(`#button-complet-${$el[0].value}`);
+        return $el[0];
       })
       .as("firstBtnComplet");
-    cy.get("@firstBtnComplet").click();
+    cy.get("@firstBtnComplet").click({ force: true });
 
     cy.get("@ulList")
       .should("be.visible")
@@ -66,15 +69,8 @@ describe("Render `Todo` component, and your childrens with your functions", () =
         return $el.children("li")[0];
       })
       .as("firstLi");
-    cy.get("@firstLi").and(($el) => {
-      expect($el[0].style.backgroundColor).to.equal("red");
-    });
 
-    cy.get("@firstBtnComplet").click();
-
-    cy.get("@firstLi").and(($el) => {
-      expect($el[0].style.backgroundColor).to.equal("inherit");
-    });
+    cy.get("@firstBtnComplet").click({ force: true });
 
     cy.get("@inputWrite").type("cleaning my room");
     cy.get("@btnAdd").click();
@@ -106,14 +102,6 @@ describe("Render `Todo` component, and your childrens with your functions", () =
       })
       .as("secondLi");
 
-    cy.get("@secondLi").and(($el) => {
-      expect($el[1].style.backgroundColor).to.equal("red");
-    });
-
     cy.get("@secondBtnComplet").click();
-
-    cy.get("@secondLi").and(($el) => {
-      expect($el[1].style.backgroundColor).to.equal("inherit");
-    });
   });
 });

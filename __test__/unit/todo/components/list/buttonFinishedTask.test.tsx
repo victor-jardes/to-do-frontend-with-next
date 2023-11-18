@@ -1,4 +1,4 @@
-import { ButtonFinishedTask } from "@/app/todo/components/list/listWithTodos/components/ButtomFinishedTask.button";
+import { ButtonFinishedTask } from "@/app/todo/components/listWithTodos/components/ButtomFinishedTask.button";
 import { ITodo } from "@/types/ITodo";
 import { render, screen, waitFor } from "@testing-library/react";
 

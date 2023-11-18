@@ -1,6 +1,6 @@
 import { mswServer } from "@/apiMocks/mswServer";
-import { ListWithTodos } from "@/app/todo/components/list/listWithTodos/ListWithTodos";
-import { ItemWithTasks } from "@/app/todo/components/list/listWithTodos/components/ItemWithTask.li";
+import { ListWithTodos } from "@/app/todo/components/listWithTodos/ListWithTodos";
+import { ItemWithTasks } from "@/app/todo/components/listWithTodos/components/ItemWithTask.li";
 import useTodos from "@/app/states/todo/useTodo";
 import { ITodo } from "@/types/ITodo";
 import { render, screen, waitFor, within } from "@testing-library/react";

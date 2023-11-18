@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from "uuid";
 import {
   StyledButtonTodoForAddTask,
   StyledButtonWraper,
-} from "./buttonAddTask.style";
+} from "../styles/buttonAddTask.style";
 import useTaskValue from "@/app/states/todo/useTaskValue";
 import useTodos from "@/app/states/todo/useTodo";
 

@@ -4,7 +4,7 @@ import { InputValueAttibute } from "@/types/IInputValueAttribute";
 import {
   StyledInputTodoWriteTask,
   StyledWraperWritInput,
-} from "./inputWriteTask.style";
+} from "../styles/inputWriteTask.style";
 import useTaskValue from "@/app/states/todo/useTaskValue";
 
 export default function InputWriteTask() {

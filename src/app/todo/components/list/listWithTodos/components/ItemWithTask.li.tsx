@@ -1,5 +1,8 @@
 import { ButtonFinishedTask } from "./ButtomFinishedTask.button";
-import { ListWraper, StyledListItemWithTask } from "./itemWithTask.style";
+import {
+  ListWraper,
+  StyledListItemWithTask,
+} from "../styles/itemWithTask.style";
 import useTodos from "@/app/states/todo/useTodo";
 import StateNavigateInPage from "@/app/states/navigate/NavigateInPage";
 

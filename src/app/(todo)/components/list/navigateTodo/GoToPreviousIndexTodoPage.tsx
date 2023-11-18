@@ -7,11 +7,12 @@ export function GoToPreviousIndexTodoPage() {
 
   return (
     <button
+      className="btnChildren"
       onClick={() =>
         goToPreviousIndexTodoPageAux({ currentPage, setCurrentPage })
       }
     >
-      Previous
+      &lt;
     </button>
   );
 }

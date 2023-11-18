@@ -11,6 +11,7 @@ export function GoToNextIndexTodoPage() {
 
   return (
     <button
+      className="btnChildren"
       onClick={() =>
         goToNextIndexTodoPageAux({
           currentPage,
@@ -20,7 +21,7 @@ export function GoToNextIndexTodoPage() {
         })
       }
     >
-      Next
+      &gt;
     </button>
   );
 }

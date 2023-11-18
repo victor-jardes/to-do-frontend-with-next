@@ -1,9 +1,9 @@
 "use client";
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect } from "react";
-import { GoToIndexTodoPage } from "./GoToIndexTodoPage";
-import { GoToPreviousIndexTodoPage } from "./GoToPreviousIndexTodoPage";
-import { GoToNextIndexTodoPage } from "./GoToNextIndexTodoPage";
+import { GoToIndexTodoPage } from "./components/GoToIndexTodoPage";
+import { GoToPreviousIndexTodoPage } from "./components/GoToPreviousIndexTodoPage";
+import { GoToNextIndexTodoPage } from "./components/GoToNextIndexTodoPage";
 import StateNumberOfPagesStore from "@/app/states/navigate/numberOfPages";
 import StateMultipleAndNumberInIndex from "@/app/states/navigate/multipleAndNumberInIndex";
 import useTodos from "@/app/states/todo/useTodo";

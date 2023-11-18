@@ -1,5 +1,5 @@
 import StateNavigateInPage from "@/app/states/navigate/NavigateInPage";
-import { goToNextIndexTodoPageAux } from "./auxFunctions/goToNextIndexTodoPageAux";
+import { goToNextIndexTodoPageAux } from "../utils/goToNextIndexTodoPageAux";
 import useTodos from "@/app/states/todo/useTodo";
 
 export function GoToNextIndexTodoPage() {

@@ -1,4 +1,4 @@
-import { goToPreviousIndexTodoPageAux } from "./auxFunctions/goToPreviousIndexTodoPageAux";
+import { goToPreviousIndexTodoPageAux } from "../utils/goToPreviousIndexTodoPageAux";
 import StateNavigateInPage from "@/app/states/navigate/NavigateInPage";
 
 export function GoToPreviousIndexTodoPage() {

@@ -1,4 +1,4 @@
-import InputWriteTask from "@/app/(todo)/components/inputs/InputWriteTask";
+import InputWriteTask from "@/app/todo/components/inputs/InputWriteTask";
 import useTaskValue from "@/app/states/todo/useTaskValue";
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";

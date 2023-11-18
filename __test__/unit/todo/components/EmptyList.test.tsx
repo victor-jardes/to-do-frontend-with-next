@@ -1,4 +1,4 @@
-import { EmptyListComponent } from "@/app/(todo)/components/emptyList/EmptyListComponent";
+import { EmptyListComponent } from "@/app/todo/components/emptyList/EmptyListComponent";
 import { render, screen, waitFor } from "@testing-library/react";
 
 describe("test `EmptyListComponent`", () => {

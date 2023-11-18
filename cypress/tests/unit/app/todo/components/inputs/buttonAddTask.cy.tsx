@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
 import React from "react";
-import ButtonAddTask from "@/app/(todo)/components/inputs/ButtonAddTask";
+import ButtonAddTask from "@/app/todo/components/inputs/ButtonAddTask";
 
 describe("test `ButtonAddTask` component", () => {
   it("should be able render", () => {

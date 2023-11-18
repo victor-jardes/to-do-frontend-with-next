@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-import InputWriteTask from "@/app/(todo)/components/inputs/InputWriteTask";
+import InputWriteTask from "@/app/todo/components/inputs/InputWriteTask";
 import React from "react";
 
 describe("test `InputWriteTask` component", () => {

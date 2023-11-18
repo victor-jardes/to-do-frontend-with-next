@@ -1,7 +1,7 @@
 import React from "react";
 import { screen, render, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import InputsTodo from "@/app/(todo)/components/inputs/InputsTodo";
+import InputsTodo from "@/app/todo/components/inputs/InputsTodo";
 import useTaskValue from "@/app/states/todo/useTaskValue";
 
 describe("<InputsTodo> component test", () => {

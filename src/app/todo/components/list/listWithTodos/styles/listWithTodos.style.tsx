@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const RenderAllTodosWraper = styled.div`
+export const StyledAllTodosWraper = styled.div`
   margin: 0.5rem;
   height: 70%;
   box-sizing: border-box;

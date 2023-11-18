@@ -7,6 +7,7 @@ import { GoToNextIndexTodoPage } from "./GoToNextIndexTodoPage";
 import StateNumberOfPagesStore from "@/app/states/navigate/numberOfPages";
 import StateMultipleAndNumberInIndex from "@/app/states/navigate/multipleAndNumberInIndex";
 import useTodos from "@/app/states/todo/useTodo";
+import { StyledNavigateWraper } from "./styles/navigateWraper.style";
 
 export function NavigateTodo() {
   const todos = useTodos((state) => state.todos);
@@ -39,14 +40,16 @@ export function NavigateTodo() {
   }, [todos]);
 
   return (
-    <>
+    <StyledNavigateWraper>
       <GoToPreviousIndexTodoPage />
       {""}
-      {numberOfPages.map((pageIndex) => (
-        <GoToIndexTodoPage pageIndex={pageIndex} key={pageIndex} />
-      ))}
+      <div>
+        {numberOfPages.map((pageIndex) => (
+          <GoToIndexTodoPage pageIndex={pageIndex} key={pageIndex} />
+        ))}
+      </div>
       {""}
       <GoToNextIndexTodoPage />
-    </>
+    </StyledNavigateWraper>
   );
 }

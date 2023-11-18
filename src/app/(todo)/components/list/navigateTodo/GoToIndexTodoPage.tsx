@@ -5,5 +5,12 @@ export function GoToIndexTodoPage({
   pageIndex,
 }: Pick<IGoToIndexTodoPageParams, "pageIndex">) {
   const setCurrentPage = StateNavigateInPage((state) => state.setCurrentPage);
-  return <button onClick={() => setCurrentPage(pageIndex)}>{pageIndex}</button>;
+  return (
+    <button
+      className="btnChildren btnIndex"
+      onClick={() => setCurrentPage(pageIndex)}
+    >
+      {pageIndex}
+    </button>
+  );
 }

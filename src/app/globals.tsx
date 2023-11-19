@@ -10,6 +10,7 @@ export const GlobalStyle = styled.createGlobalStyle`
   *:after {
     box-sizing: inherit;
   }
+
   html {
     box-sizing: border-box;
     font-size: 62.5%;
@@ -23,6 +24,11 @@ export const GlobalStyle = styled.createGlobalStyle`
 
   ul {
     list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  p {
     padding: 0;
     margin: 0;
   }

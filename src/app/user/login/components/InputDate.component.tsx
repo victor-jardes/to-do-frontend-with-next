@@ -6,9 +6,5 @@ interface IInputsTypes {
 }
 
 export function InputDate({ type, placeHolder }: IInputsTypes) {
-  return (
-    <>
-      <StyledInputsDate type={type} placeholder={placeHolder} />
-    </>
-  );
+  return <StyledInputsDate type={type} placeholder={placeHolder} />;
 }

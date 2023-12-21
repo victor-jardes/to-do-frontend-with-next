@@ -15,8 +15,8 @@ export default function SignIn() {
       <CardHeader text="Login" />
       <div>
         <p>midias</p>
+        <SmallLetters text={SOCIAL_MIDIAS_LOGIN} alignBaseline={true} />
       </div>
-      <SmallLetters text={SOCIAL_MIDIAS_LOGIN} alignBaseline={true} />
 
       <CardMain gap="0.2rem">
         <InputDate type={"text"} placeHolder={"Email"} />

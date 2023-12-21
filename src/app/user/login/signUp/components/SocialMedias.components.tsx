@@ -7,7 +7,6 @@ type SocialMediasProps = {
 export default function SocialMedias({ text }: SocialMediasProps) {
   return (
     <>
-      <p>icons</p>
       <SmallLetters text={text} />
     </>
   );

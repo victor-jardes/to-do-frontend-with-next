@@ -12,8 +12,10 @@ export default function SignUp() {
     <>
       <CardHeader text={"Create Account"} />
 
-      <SocialMedias text={SOCIAL_MIDIAS_LOGIN} />
-
+      <div>
+        <p>icons</p>
+        <SocialMedias text={SOCIAL_MIDIAS_LOGIN} />
+      </div>
       <CardMain gap={"0.2rem"}>
         <InputDate type="text" placeHolder="Name" />
         <InputDate type="email" placeHolder="Email" />

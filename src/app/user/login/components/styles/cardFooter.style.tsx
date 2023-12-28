@@ -1,3 +1,3 @@
 import styled from "styled-components";
 
-export const StyledCardFooter = styled.footer``;
+export const StyledCardFooter = styled.section``;

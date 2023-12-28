@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledCardHeader = styled.header`
+export const StyledCardHeader = styled.section`
   color: #000;
   font-size: 30px;
   font-style: normal;

@@ -4,7 +4,7 @@ import { CardHeader } from "../components/CardHeader.component";
 import { CardMain } from "../components/CardMain.component";
 import { InputDate } from "../components/InputDate.component";
 import { SmallLetters } from "../components/SmallLetters.component";
-import SocialMedias from "../signUp/components/SocialMedias.components";
+import SocialMedias from "../components/SocialMedias.components";
 
 const SOCIAL_MIDIAS_LOGIN = "or use your email account";
 const RECOVERY_PASSWORD = "Forgot your password?";
@@ -14,8 +14,9 @@ export default function SignIn() {
     <>
       <CardHeader text="Login" />
       <div>
-        <p>midias</p>
         <SmallLetters text={SOCIAL_MIDIAS_LOGIN} alignBaseline={true} />
+        <SocialMedias picture="/images/facebook.png" alt="facebook icon" />
+        <SocialMedias picture="/images/googlesearch.png" alt="google icon" />
       </div>
 
       <CardMain gap="0.2rem">

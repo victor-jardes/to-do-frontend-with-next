@@ -31,7 +31,7 @@ export default function SignIn() {
         <InputDate type={"password"} placeHolder={"password"} />
       </CardMain>
 
-      <CardFooter gap={"2rem"}>
+      <CardFooter>
         <SmallLetters text={RECOVERY_PASSWORD} />
         <ActionsButton text={"sign in"} />
       </CardFooter>

@@ -31,7 +31,7 @@ export default function SignUp() {
         <InputDate type="password" placeHolder="Password" />
       </CardMain>
 
-      <CardFooter gap="2rem">
+      <CardFooter>
         <ActionsButton text={"Sign up"} />
       </CardFooter>
     </>

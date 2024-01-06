@@ -7,15 +7,13 @@ import SignUp from "./login/signUp";
 
 export default function LoginPage() {
   return (
-    <>
-      <Dashboard>
-        <UserInfosContainer>
-          <SignIn />
-        </UserInfosContainer>
-        <UserInfosContainer>
-          <SignUp />
-        </UserInfosContainer>
-      </Dashboard>
-    </>
+    <Dashboard>
+      <UserInfosContainer>
+        <SignIn />
+      </UserInfosContainer>
+      <UserInfosContainer>
+        <SignUp />
+      </UserInfosContainer>
+    </Dashboard>
   );
 }

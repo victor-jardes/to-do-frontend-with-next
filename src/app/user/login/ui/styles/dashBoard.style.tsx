@@ -6,9 +6,9 @@ export const StyledDashBoard = styled.div`
   border-radius: 10px;
   border-color: black;
   border-style: solid;
-  flex-shrink: 0;
   grid-template-columns: repeat(2, 1fr);
   height: 500px;
   margin: auto;
+  margin-top: 50px;
   width: 900px;
 `;

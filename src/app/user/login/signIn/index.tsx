@@ -28,7 +28,7 @@ export default function SignIn() {
 
       <CardMain gap="0.2rem">
         <InputDate type={"text"} placeHolder={"Email"} />
-        <InputDate type={"password"} placeHolder={"password"} />
+        <InputDate type={"password"} placeHolder={"Password"} />
       </CardMain>
 
       <CardFooter>

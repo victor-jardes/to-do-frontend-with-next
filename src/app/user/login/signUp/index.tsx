@@ -26,9 +26,9 @@ export default function SignUp() {
       </StyledSocialMediasCard>
 
       <CardMain gap={"0.2rem"}>
-        <InputDate type="text" placeHolder="Name" />
         <InputDate type="email" placeHolder="Email" />
         <InputDate type="password" placeHolder="Password" />
+        <InputDate type="text" placeHolder="Name" />
       </CardMain>
 
       <CardFooter>

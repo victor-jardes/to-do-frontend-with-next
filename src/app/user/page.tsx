@@ -1,18 +1,21 @@
 "use client";
-import { BoardLogin } from "./login/ui/BoardLogin.ui";
 import { Dashboard } from "./login/ui/Dashboar.ui";
 import { UserInfosContainer } from "./login/ui/UserInfos.container";
 import SignIn from "./login/signIn";
 import SignUp from "./login/signUp";
+import useHandleChangeRegister from "./login/states/useHandleChangeRegister.state";
+import RegisterButtons from "./login/components/RegisterButtons.component";
 
 export default function LoginPage() {
+  const selectRegisterFormart = useHandleChangeRegister(
+    (state) => state.selectLogin
+  );
+
   return (
     <Dashboard>
       <UserInfosContainer>
-        <SignIn />
-      </UserInfosContainer>
-      <UserInfosContainer>
-        <SignUp />
+        <RegisterButtons />
+        {selectRegisterFormart ? <SignIn /> : <SignUp />}
       </UserInfosContainer>
     </Dashboard>
   );
